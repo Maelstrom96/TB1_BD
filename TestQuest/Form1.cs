@@ -43,7 +43,7 @@ namespace TestQuest
                 for (int i = 0; i < 30; i++)
                 {
                     Invalidate();
-                    Thread.Sleep(10);
+                    Thread.Sleep(1);
                 }
             }
         }
@@ -56,6 +56,11 @@ namespace TestQuest
         private void button2_Click(object sender, EventArgs e)
         {
             t.Suspend();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            t.Abort();
         }
     }
 }

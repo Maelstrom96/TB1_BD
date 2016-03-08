@@ -14,6 +14,10 @@ namespace TestQuest
         Color outerGray = System.Drawing.ColorTranslator.FromHtml("#9EA2A3");
         Color[] colors = {Color.Orange, Color.Green, Color.Blue, Color.Red};
 
+        // Brushes & Pens
+        SolidBrush redBrush;
+        Pen gray;
+
         float indexAngle = 0; // Middle of White;
 
         float diameter = 200.0F;
@@ -25,6 +29,9 @@ namespace TestQuest
         public Wheel()
         {
             categorieAngle = 360.0F / 5.0F;
+
+            redBrush = new SolidBrush(Color.Red);
+            gray = new Pen(outerGray, 5);
         }
 
         Categories GetCurrentPick()
@@ -34,13 +41,7 @@ namespace TestQuest
 
         public void Draw(PaintEventArgs e)
         {
-            // SMOOOOOOTH
-            e.Graphics.SmoothingMode =
-                System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-            // Create solid brush.
-            SolidBrush redBrush = new SolidBrush(Color.Red);
-            Pen gray = new Pen(outerGray, 5);
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias; //Smooth
 
             for (int i = 0; i < 4; i++ )
             {
@@ -48,9 +49,8 @@ namespace TestQuest
             }
 
             // Fill pie to screen.
-            //DrawPie(Color.Green, 180, e);
             e.Graphics.DrawEllipse(gray, posx, posy, diameter, diameter);
-            indexAngle += 10;
+            indexAngle += 1;
         }
 
         private void DrawPie(Color color, float startAngle, PaintEventArgs e)
