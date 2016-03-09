@@ -38,12 +38,13 @@ namespace TestQuest
 
         public void Run()
         {
-            while (true)
+            wheel.RandSpin();
+            while (wheel.Spinning())
             {
                 for (int i = 0; i < 30; i++)
                 {
                     Invalidate();
-                    Thread.Sleep(1);
+                    //Thread.Sleep(1);
                 }
             }
         }
@@ -61,6 +62,16 @@ namespace TestQuest
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             t.Abort();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (!t.IsAlive)
+            {
+                t.Abort();
+                t = new Thread(new ThreadStart(Run));
+                t.Start();
+            }
         }
     }
 }
