@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,7 +12,10 @@ namespace TestQuest
 {
     public class Wheel
     {
-        //Colors
+        // Sounds
+        SoundPlayer simpleSound = new SoundPlayer(Properties.Resources.tik_ori);
+
+        // Colors
         Color outerGray = System.Drawing.ColorTranslator.FromHtml("#9EA2A3");
         Color[] colors = {Color.Orange, Color.Green, Color.Blue, Color.Red, Color.White};
         Random rnd = new Random();
@@ -22,7 +26,7 @@ namespace TestQuest
         Pen semiTransPen = new Pen(Color.FromArgb(64,Color.Black), 10);
         Pen smallline = new Pen(Color.FromArgb(200, Color.Black), 2);
 
-        float indexAngle = 0; // Middle of White;
+        float indexAngle = 270; // Middle of White;
         float spin;
         const float maxspin = 3.5F;
         const float minspin = 2.5F;
@@ -56,6 +60,13 @@ namespace TestQuest
             return spin != 0.0F;
         }
 
+        public void PlayTicSound()
+        {
+            float tmp = (indexAngle + 51.0F) % categorieAngle;
+            if (tmp > 70) simpleSound.Play();
+            //if (indexAngle > 355) simpleSound.Play();
+        }
+
         public void Draw(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias; //Smooth
@@ -73,6 +84,8 @@ namespace TestQuest
             indexAngle += spin;
             if (spin > 0) spin -= 0.0015F;
             else spin = 0.0F;
+
+            PlayTicSound();
         }
 
         private Point GetLinePos(float angle)
