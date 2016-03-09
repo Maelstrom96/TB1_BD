@@ -28,7 +28,6 @@ namespace TestQuest
 
             wheel = new Wheel();
             t = new Thread(new ThreadStart(Run));
-            t.Start();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -66,7 +65,7 @@ namespace TestQuest
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (!t.IsAlive)
+            if (!t.IsAlive || t.ThreadState.Equals(ThreadState.Unstarted))
             {
                 t.Abort();
                 t = new Thread(new ThreadStart(Run));
