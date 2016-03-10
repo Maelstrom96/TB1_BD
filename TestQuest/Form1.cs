@@ -13,8 +13,8 @@ namespace TestQuest
 {
     public partial class Form1 : Form
     {
-        Wheel wheel;
-        Thread t;
+        private Wheel wheel;
+        private BackgroundWorker bw = new BackgroundWorker();
 
         public Form1()
         {
@@ -27,7 +27,8 @@ namespace TestQuest
                 true);
 
             wheel = new Wheel();
-            t = new Thread(new ThreadStart(Run));
+            bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_SpinComplete);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -35,32 +36,40 @@ namespace TestQuest
             wheel.Draw(e);
         }
 
+        private void bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            wheel.RandSpin();
+            while (wheel.Spinning())
+            {
+                Invalidate();
+            }
+        }
+
         public void Run()
         {
             wheel.RandSpin();
             while (wheel.Spinning())
             {
-                for (int i = 0; i < 30; i++)
-                {
-                    Invalidate();
-                }
+                Invalidate();
             }
-            label1.Text = wheel.GetCurrentPick().ToString();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            t.Abort();
+
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (!t.IsAlive || t.ThreadState.Equals(ThreadState.Unstarted))
+            if (!bw.IsBusy)
             {
-                t.Abort();
-                t = new Thread(new ThreadStart(Run));
-                t.Start();
+                bw.RunWorkerAsync();
             }
+        }
+
+        private void bw_SpinComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            label1.Text = wheel.GetCurrentPick().ToString();
         }
     }
 }
