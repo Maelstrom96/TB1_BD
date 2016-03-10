@@ -71,5 +71,17 @@ namespace TestQuest
         {
             label1.Text = wheel.GetCurrentPick().ToString();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Admin admin = new Admin();
+            admin.ShowDialog();
+        }
+
+        private void BTN_Admin_Click(object sender, EventArgs e)
+        {
+            Admin admin = new Admin();
+            admin.ShowDialog();
+        }
     }
 }
