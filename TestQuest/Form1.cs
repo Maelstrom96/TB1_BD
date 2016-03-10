@@ -43,19 +43,9 @@ namespace TestQuest
                 for (int i = 0; i < 30; i++)
                 {
                     Invalidate();
-                    //Thread.Sleep(1);
                 }
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            t.Resume();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            t.Suspend();
+            label1.Text = wheel.GetCurrentPick().ToString();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

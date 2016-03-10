@@ -17,7 +17,7 @@ namespace TestQuest
 
         // Colors
         Color outerGray = System.Drawing.ColorTranslator.FromHtml("#9EA2A3");
-        Color[] colors = {Color.Orange, Color.Green, Color.Blue, Color.Red, Color.White};
+        SolidBrush[] colorBrushes = { new SolidBrush(Color.Orange), new SolidBrush(Color.Green), new SolidBrush(Color.Blue), new SolidBrush(Color.Red), new SolidBrush(Color.White) };
         Random rnd = new Random();
 
         // Brushes & Pens
@@ -26,7 +26,7 @@ namespace TestQuest
         Pen semiTransPen = new Pen(Color.FromArgb(64,Color.Black), 10);
         Pen smallline = new Pen(Color.FromArgb(200, Color.Black), 2);
 
-        float indexAngle = 270; // Middle of White;
+        float indexAngle = 18; // Middle of White;
         float spin;
         const float maxspin = 3.5F;
         const float minspin = 2.5F;
@@ -34,7 +34,9 @@ namespace TestQuest
 
         const float diameter = 300.0F;
         const float radius = diameter / 2.0F;
-        const float categorieAngle = 360.0F / 5.0F;
+        const float categorieAngle = 360.0F / nbCategories;
+        const float halfCategorieAngle = categorieAngle / 2;
+        const int nbCategories = 5;
 
         const float posx = 25.0F;
         const float posy = 25.0F;
@@ -45,9 +47,14 @@ namespace TestQuest
             gray = new Pen(outerGray, 8);
         }
 
-        Categories GetCurrentPick()
+        public Categories GetCurrentPick()
         {
-            return Categories.Vide;
+            if (indexAngle < 18) return Categories.Histoire;
+            else if (indexAngle < 18 + (categorieAngle * 1)) return Categories.Geographie;
+            else if (indexAngle < 18 + (categorieAngle * 2)) return Categories.Science;
+            else if (indexAngle < 18 + (categorieAngle * 3)) return Categories.Sport;
+            else if (indexAngle < 18 + (categorieAngle * 4)) return Categories.Vide;
+            else return Categories.Histoire;
         }
 
         public void RandSpin()
@@ -63,8 +70,7 @@ namespace TestQuest
         public void PlayTicSound()
         {
             float tmp = (indexAngle + 51.0F) % categorieAngle;
-            if (tmp > 70) simpleSound.Play();
-            //if (indexAngle > 355) simpleSound.Play();
+            if (tmp > 70 && Spinning()) simpleSound.Play();
         }
 
         public void Draw(PaintEventArgs e)
@@ -73,7 +79,7 @@ namespace TestQuest
 
             for (int i = 0; i < 5; i++ )
             {
-                DrawPie(colors[i], (GetIndex() + (categorieAngle / 2.0F)) + (categorieAngle * i), e);
+                DrawPie(i, (GetIndex() + halfCategorieAngle) + (categorieAngle * i), e);
             }
 
             // Fill pie to screen.
@@ -88,30 +94,37 @@ namespace TestQuest
             PlayTicSound();
         }
 
+        /**
+         * Optimisé
+         **/
         private Point GetLinePos(float angle)
         {
-            double Bx = posx + radius + (radius * Math.Cos(angle * (Math.PI / 180)));
-            double By = posy + radius + (radius * Math.Sin(angle * (Math.PI / 180)));
+            double tmp = angle * (Math.PI / 180);
+            double Bx = posx + radius + (radius * Math.Cos(tmp));
+            double By = posy + radius + (radius * Math.Sin(tmp));
             return new Point((int)Bx, (int)By);
         }
 
-        private void DrawPie(Color color, float startAngle, PaintEventArgs e)
+        /**
+         * Optimisé 
+         **/
+        private void DrawPie(int colorIndex, float startAngle, PaintEventArgs e)
         {
-            SolidBrush brush = new SolidBrush(color);
-            e.Graphics.FillPie(brush, posx, posy, diameter, diameter, startAngle, categorieAngle);
+            e.Graphics.FillPie(colorBrushes[colorIndex], posx, posy, diameter, diameter, startAngle, categorieAngle);
         }
 
+        /**
+         * Optimisé
+         **/ 
         private void DrawLines(PaintEventArgs e)
         {
-            for (int i = 0; i < 5; i ++)
-            {
-                e.Graphics.DrawLine(smallline, center, GetLinePos(indexAngle + (categorieAngle / 2) + categorieAngle * (i + 1)));
-            }
+            for (int i = 0; i < nbCategories; i ++)
+                e.Graphics.DrawLine(smallline, center, GetLinePos(indexAngle + halfCategorieAngle + categorieAngle * (i + 1)));
         }
 
         private float GetIndex()
         {
-            if (indexAngle > 360.0F) indexAngle = indexAngle - 360.0F;
+            if (indexAngle > 360.0F) indexAngle -= 360.0F;
             return indexAngle;
         }
     }
