@@ -51,6 +51,18 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminJoueurs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminJoueurs.Designer.cs">
+      <DependentUpon>AdminJoueurs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminQuestions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminQuestions.Designer.cs">
+      <DependentUpon>AdminQuestions.cs</DependentUpon>
+    </Compile>
     <Compile Include="CategorieQuestions.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Database_Connector.cs" />
