@@ -26,11 +26,11 @@ namespace TestQuest
         Pen semiTransPen = new Pen(Color.FromArgb(64,Color.Black), 10);
         Pen smallline = new Pen(Color.FromArgb(200, Color.Black), 2);
 
-        float indexAngle = 18; // Middle of White;
+        float indexAngle = 270; // Middle of White;
         float spin;
         const float maxspin = 3.5F;
         const float minspin = 2.5F;
-        Point center = new Point((int)posx + (int)radius, (int)posy + (int)radius);
+        Point center;
 
         const float diameter = 300.0F;
         const float radius = diameter / 2.0F;
@@ -38,11 +38,17 @@ namespace TestQuest
         const float halfCategorieAngle = categorieAngle / 2;
         const int nbCategories = 5;
 
-        const float posx = 25.0F;
-        const float posy = 25.0F;
+        float posx;
+        float posy;
+        Label lb;
 
-        public Wheel()
+        public Wheel(Label Lb, float Posx_center = 175.0F, float Posy_center = 175.0F)
         {
+            lb = Lb;
+            posx = Posx_center - radius - 10;
+            posy = Posy_center - radius;
+            center = new Point((int)posx + (int)radius, (int)posy + (int)radius);
+
             redBrush = new SolidBrush(Color.Red);
             gray = new Pen(outerGray, 8);
         }
@@ -53,7 +59,7 @@ namespace TestQuest
             else if (indexAngle < 18 + (categorieAngle * 1)) return Categories.Geographie;
             else if (indexAngle < 18 + (categorieAngle * 2)) return Categories.Science;
             else if (indexAngle < 18 + (categorieAngle * 3)) return Categories.Sport;
-            else if (indexAngle < 18 + (categorieAngle * 4)) return Categories.Vide;
+            else if (indexAngle < 18 + (categorieAngle * 4)) return Categories.Joker;
             else return Categories.Histoire;
         }
 
@@ -70,14 +76,19 @@ namespace TestQuest
         public void PlayTicSound()
         {
             float tmp = (indexAngle + 51.0F) % categorieAngle;
-            if (tmp > 70 && Spinning()) simpleSound.Play();
+            if (tmp < 2 && Spinning()) 
+            {
+                simpleSound.Play();
+                lb.Text = GetCurrentPick().ToString();
+                lb.Update();
+            }
         }
 
         public void Draw(PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias; //Smooth
 
-            for (int i = 0; i < 5; i++ )
+            for (int i = 0; i < nbCategories; i++)
             {
                 DrawPie(i, (GetIndex() + halfCategorieAngle) + (categorieAngle * i), e);
             }

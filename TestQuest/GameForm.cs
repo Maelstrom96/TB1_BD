@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace TestQuest
 {
-    public partial class Form1 : Form
+    public partial class GameForm : Form
     {
         private Wheel wheel;
         private BackgroundWorker bw = new BackgroundWorker();
 
-        public Form1()
+        public GameForm()
         {
             InitializeComponent();
 
@@ -26,7 +26,7 @@ namespace TestQuest
                 ControlStyles.DoubleBuffer,
                 true);
 
-            wheel = new Wheel();
+            wheel = new Wheel(lb_Categorie, this.Width / 2);
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_SpinComplete);
         }
@@ -69,7 +69,7 @@ namespace TestQuest
 
         private void bw_SpinComplete(object sender, RunWorkerCompletedEventArgs e)
         {
-            label1.Text = wheel.GetCurrentPick().ToString();
+            lb_Categorie.Text = wheel.GetCurrentPick().ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -82,6 +82,11 @@ namespace TestQuest
         {
             Admin admin = new Admin();
             admin.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

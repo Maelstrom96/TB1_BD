@@ -67,7 +67,7 @@ public enum Categories
 {
     // couleurs
     // Orange, vert, bleu, rouge
-    Sport, Science, Geographie, Histoire, Vide
+    Sport, Science, Geographie, Histoire, Joker
 }
 public enum CouleursCategorie
 {
