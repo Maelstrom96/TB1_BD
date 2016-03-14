@@ -18,7 +18,11 @@ namespace TestQuest
         {
             InitializeComponent();
             categorie = CB_Categories;
-            Database_Connector.Select.Categories(this);
+            var categories = Database_Connector.Select.Categories();
+            foreach(String categorie_ in categories)
+            {
+                categorie.Items.Add(categorie_);
+            }
         }
 
         private void BTN_Cancel_Click(object sender, EventArgs e)
