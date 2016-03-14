@@ -28,9 +28,9 @@ namespace TestQuest
             BTN_Add.Visible = true;
             BTN_Delete.Visible = true;
             BTN_Modifier.Visible = true;
+            btn_pressed = 1;
 
             dgv_admin.DataSource = Database_Connector.Select.Questions();
-            btn_pressed = 1;
         }
 
         private void BTN_Add_Click(object sender, EventArgs e)
@@ -54,6 +54,7 @@ namespace TestQuest
             BTN_Modifier.Visible = true;
 
             btn_pressed = 2;
+            dgv_admin.DataSource = Database_Connector.Select.Players();
         }
     }
 }
