@@ -123,7 +123,21 @@ namespace TestQuest
             }
 
             //SELECT FOR PLAYERS TO POPULATE THE DGV IN (ADMIN)
-            //TODO
+            public static DataTable Players()
+            {
+                OracleCommand playersList = new OracleCommand("GESTIONSPLAYERS", Database_Connector.GetConnection());
+                playersList.CommandText = "GESTIONSPLAYERS.LISTER";
+                playersList.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
+                oraReturn.Direction = ParameterDirection.ReturnValue;
+                playersList.Parameters.Add(oraReturn);
+
+                OracleDataAdapter adapter = new OracleDataAdapter(playersList);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
         }
 
         public static class Delete
@@ -134,6 +148,32 @@ namespace TestQuest
         public static class Insert
         {
             //INSERT QUESTIONS WITH ANSWER IN (ADMINQUESTIONS)
+            //TODO
+
+            //INSERT PLAYERS IN (ADMINPLAYERS)
+            public static void Players(Joueur player)
+            {
+                OracleCommand playersAdd = new OracleCommand("GESTIONSPLAYERS", Database_Connector.GetConnection());
+                playersAdd.CommandText = "GESTIONSPLAYERS.INSERTION";
+                playersAdd.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter alias = new OracleParameter("ALIAS", OracleDbType.Varchar2);
+                alias.Direction = ParameterDirection.Input;
+                alias.Value = player.GetAlias();
+                playersAdd.Parameters.Add(alias);
+
+                OracleParameter name = new OracleParameter("NAME", OracleDbType.Varchar2);
+                name.Direction = ParameterDirection.Input;
+                name.Value = player.GetNom();
+                playersAdd.Parameters.Add(name);
+
+                OracleParameter prenom = new OracleParameter("PRENOM", OracleDbType.Varchar2);
+                prenom.Direction = ParameterDirection.Input;
+                prenom.Value = player.GetPrenom();
+                playersAdd.Parameters.Add(prenom);
+
+                playersAdd.ExecuteNonQuery();
+            }
         }
 
         public static class Update

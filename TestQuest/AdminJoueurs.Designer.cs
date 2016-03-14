@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.BTN_Submit = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TXB_Alias = new System.Windows.Forms.TextBox();
+            this.TXB_Prenom = new System.Windows.Forms.TextBox();
+            this.TXB_Name = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,27 +45,28 @@
             this.BTN_Submit.TabIndex = 0;
             this.BTN_Submit.Text = "Soumettre";
             this.BTN_Submit.UseVisualStyleBackColor = true;
+            this.BTN_Submit.Click += new System.EventHandler(this.BTN_Submit_Click);
             // 
-            // textBox1
+            // TXB_Alias
             // 
-            this.textBox1.Location = new System.Drawing.Point(102, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.TXB_Alias.Location = new System.Drawing.Point(102, 12);
+            this.TXB_Alias.Name = "TXB_Alias";
+            this.TXB_Alias.Size = new System.Drawing.Size(100, 20);
+            this.TXB_Alias.TabIndex = 1;
             // 
-            // textBox2
+            // TXB_Prenom
             // 
-            this.textBox2.Location = new System.Drawing.Point(102, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.TXB_Prenom.Location = new System.Drawing.Point(102, 38);
+            this.TXB_Prenom.Name = "TXB_Prenom";
+            this.TXB_Prenom.Size = new System.Drawing.Size(100, 20);
+            this.TXB_Prenom.TabIndex = 1;
             // 
-            // textBox3
+            // TXB_Name
             // 
-            this.textBox3.Location = new System.Drawing.Point(102, 64);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 1;
+            this.TXB_Name.Location = new System.Drawing.Point(102, 64);
+            this.TXB_Name.Name = "TXB_Name";
+            this.TXB_Name.Size = new System.Drawing.Size(100, 20);
+            this.TXB_Name.TabIndex = 1;
             // 
             // label1
             // 
@@ -102,9 +103,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TXB_Name);
+            this.Controls.Add(this.TXB_Prenom);
+            this.Controls.Add(this.TXB_Alias);
             this.Controls.Add(this.BTN_Submit);
             this.Name = "AdminJoueurs";
             this.Text = "AdminJoueurs";
@@ -116,9 +117,9 @@
         #endregion
 
         private System.Windows.Forms.Button BTN_Submit;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox TXB_Alias;
+        private System.Windows.Forms.TextBox TXB_Prenom;
+        private System.Windows.Forms.TextBox TXB_Name;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
