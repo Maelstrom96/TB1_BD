@@ -70,8 +70,10 @@ namespace TestQuest
             }
 
             //SELECT FOR CATEGORIES TO POPULATE THE COMBO BOX IN ADD QUESTIONS (ADMINQUESTIONS)
-            public static void Categories(AdminQuestions form)
+            public static List<String> Categories()
             {
+                List<String> list = new List<String>();
+
                 OracleCommand categoriesListe = new OracleCommand("GESTIONSCATEGORIES", Database_Connector.GetConnection());
                 categoriesListe.CommandText = "GESTIONSCATEGORIES.LISTER";
                 categoriesListe.CommandType = CommandType.StoredProcedure;
@@ -80,11 +82,15 @@ namespace TestQuest
                 oraReturn.Direction = ParameterDirection.ReturnValue;
                 categoriesListe.Parameters.Add(oraReturn);
 
-                OracleDataAdapter adapter = new OracleDataAdapter(categoriesListe);
-                DataTable dt = new DataTable();
-                adapter.Fill(dt);
-                form.categorie.DataSource = dt;
-                form.categorie.DisplayMember = "NOMCATEGORIES";
+                using (OracleDataReader reader = categoriesListe.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(reader.GetString(0));
+                    }
+                }
+
+                return list;
             }
 
             //SELECT FOR PLAYERS TO POPULATE THE DGV IN (ADMIN)
