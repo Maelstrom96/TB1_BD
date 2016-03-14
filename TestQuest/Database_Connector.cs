@@ -69,6 +69,35 @@ namespace TestQuest
                 return dt;
             }
 
+            public static Question Question(int NumQuestion)
+            {
+                List<Reponse> repList = new List<Reponse>();
+
+                OracleCommand questionListe = new OracleCommand("GESTIONSQUESTIONS", Database_Connector.GetConnection());
+                questionListe.CommandText = "GESTIONSQUESTIONS.GETQ";
+                questionListe.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
+                oraReturn.Direction = ParameterDirection.ReturnValue;
+                questionListe.Parameters.Add(oraReturn);
+
+                OracleParameter oraParam = new OracleParameter("QCODE", OracleDbType.Int32);
+                oraParam.Direction = ParameterDirection.Input;
+                oraParam.Value = NumQuestion;
+                questionListe.Parameters.Add(oraParam);
+
+                using (OracleDataReader reader = questionListe.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        //repList
+                    }
+                }
+
+                return 
+
+            }
+
             //SELECT FOR CATEGORIES TO POPULATE THE COMBO BOX IN ADD QUESTIONS (ADMINQUESTIONS)
             public static List<String> Categories()
             {
