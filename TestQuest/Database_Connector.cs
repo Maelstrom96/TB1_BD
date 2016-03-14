@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace TestQuest
 {
@@ -52,7 +53,7 @@ namespace TestQuest
         {
             //() = FORM NAME
             //SELECT FOR QUESTIONS TO PUPOLATE THE DGV IN (ADMIN)
-            public static void Questions(Admin form)
+            public static DataTable Questions()
             {
                 OracleCommand questionListe = new OracleCommand("GESTIONSQUESTIONS", Database_Connector.GetConnection());
                 questionListe.CommandText = "GESTIONSQUESTIONS.LISTER";
@@ -65,7 +66,7 @@ namespace TestQuest
                 OracleDataAdapter adapter = new OracleDataAdapter(questionListe);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
-                form.dgv_admin.DataSource = dt;
+                return dt;
             }
 
             //SELECT FOR CATEGORIES TO POPULATE THE COMBO BOX IN ADD QUESTIONS (ADMINQUESTIONS)

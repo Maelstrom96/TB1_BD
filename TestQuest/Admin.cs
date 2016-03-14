@@ -29,7 +29,7 @@ namespace TestQuest
             BTN_Delete.Visible = true;
             BTN_Modifier.Visible = true;
 
-            Database_Connector.Select.Questions(this);
+            dgv_admin.DataSource = Database_Connector.Select.Questions();
             btn_pressed = 1;
         }
 
