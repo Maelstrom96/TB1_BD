@@ -45,6 +45,7 @@
             this.BTN_Questions.TabIndex = 0;
             this.BTN_Questions.Text = "Questions";
             this.BTN_Questions.UseVisualStyleBackColor = true;
+            this.BTN_Questions.Click += new System.EventHandler(this.BTN_Questions_Click);
             // 
             // BTN_Players
             // 
@@ -54,6 +55,7 @@
             this.BTN_Players.TabIndex = 0;
             this.BTN_Players.Text = "Joueurs";
             this.BTN_Players.UseVisualStyleBackColor = true;
+            this.BTN_Players.Click += new System.EventHandler(this.BTN_Players_Click);
             // 
             // DGV_Admin
             // 
@@ -92,6 +94,7 @@
             this.BTN_Add.Text = "Ajouter";
             this.BTN_Add.UseVisualStyleBackColor = true;
             this.BTN_Add.Visible = false;
+            this.BTN_Add.Click += new System.EventHandler(this.BTN_Add_Click);
             // 
             // Admin
             // 

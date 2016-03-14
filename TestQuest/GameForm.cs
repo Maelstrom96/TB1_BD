@@ -19,6 +19,7 @@ namespace TestQuest
         public GameForm()
         {
             InitializeComponent();
+            Database_Connector.OpenConnection();
 
             this.SetStyle(
                 ControlStyles.AllPaintingInWmPaint |
@@ -70,12 +71,6 @@ namespace TestQuest
         private void bw_SpinComplete(object sender, RunWorkerCompletedEventArgs e)
         {
             lb_Categorie.Text = wheel.GetCurrentPick().ToString();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Admin admin = new Admin();
-            admin.ShowDialog();
         }
 
         private void BTN_Admin_Click(object sender, EventArgs e)

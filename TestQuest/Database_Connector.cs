@@ -50,7 +50,44 @@ namespace TestQuest
 
         public static class Select
         {
-           
+            //() = FORM NAME
+            //SELECT FOR QUESTIONS TO PUPOLATE THE DGV IN (ADMIN)
+            public static void Questions(Admin form)
+            {
+                OracleCommand questionListe = new OracleCommand("GESTIONSQUESTIONS", Database_Connector.GetConnection());
+                questionListe.CommandText = "GESTIONSQUESTIONS.LISTER";
+                questionListe.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
+                oraReturn.Direction = ParameterDirection.ReturnValue;
+                questionListe.Parameters.Add(oraReturn);
+
+                OracleDataAdapter adapter = new OracleDataAdapter(questionListe);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                form.dgv_admin.DataSource = dt;
+            }
+
+            //SELECT FOR CATEGORIES TO POPULATE THE COMBO BOX IN ADD QUESTIONS (ADMINQUESTIONS)
+            public static void Categories(AdminQuestions form)
+            {
+                OracleCommand categoriesListe = new OracleCommand("GESTIONSCATEGORIES", Database_Connector.GetConnection());
+                categoriesListe.CommandText = "GESTIONSCATEGORIES.LISTER";
+                categoriesListe.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
+                oraReturn.Direction = ParameterDirection.ReturnValue;
+                categoriesListe.Parameters.Add(oraReturn);
+
+                OracleDataAdapter adapter = new OracleDataAdapter(categoriesListe);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                form.categorie.DataSource = dt;
+                form.categorie.DisplayMember = "NOMCATEGORIES";
+            }
+
+            //SELECT FOR PLAYERS TO POPULATE THE DGV IN (ADMIN)
+            //TODO
         }
 
         public static class Delete
@@ -60,7 +97,7 @@ namespace TestQuest
 
         public static class Insert
         {
-            
+            //INSERT QUESTIONS WITH ANSWER IN (ADMINQUESTIONS)
         }
 
         public static class Update

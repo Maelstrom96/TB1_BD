@@ -38,13 +38,14 @@
             this.RB_Good2 = new System.Windows.Forms.RadioButton();
             this.RB_Good3 = new System.Windows.Forms.RadioButton();
             this.RB_Good4 = new System.Windows.Forms.RadioButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.CB_Categories = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.BTN_Cancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BTN_Submit
             // 
-            this.BTN_Submit.Location = new System.Drawing.Point(141, 344);
+            this.BTN_Submit.Location = new System.Drawing.Point(287, 344);
             this.BTN_Submit.Name = "BTN_Submit";
             this.BTN_Submit.Size = new System.Drawing.Size(75, 23);
             this.BTN_Submit.TabIndex = 0;
@@ -131,13 +132,13 @@
             this.RB_Good4.Text = "Bonne réponse";
             this.RB_Good4.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // CB_Categories
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(141, 285);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(118, 21);
-            this.comboBox1.TabIndex = 4;
+            this.CB_Categories.FormattingEnabled = true;
+            this.CB_Categories.Location = new System.Drawing.Point(141, 285);
+            this.CB_Categories.Name = "CB_Categories";
+            this.CB_Categories.Size = new System.Drawing.Size(118, 21);
+            this.CB_Categories.TabIndex = 4;
             // 
             // label1
             // 
@@ -148,13 +149,25 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Categorie";
             // 
+            // BTN_Cancel
+            // 
+            this.BTN_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BTN_Cancel.Location = new System.Drawing.Point(12, 344);
+            this.BTN_Cancel.Name = "BTN_Cancel";
+            this.BTN_Cancel.Size = new System.Drawing.Size(75, 23);
+            this.BTN_Cancel.TabIndex = 6;
+            this.BTN_Cancel.Text = "Annuler";
+            this.BTN_Cancel.UseVisualStyleBackColor = true;
+            this.BTN_Cancel.Click += new System.EventHandler(this.BTN_Cancel_Click);
+            // 
             // AdminQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(374, 379);
+            this.Controls.Add(this.BTN_Cancel);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.CB_Categories);
             this.Controls.Add(this.RB_Good4);
             this.Controls.Add(this.RB_Good3);
             this.Controls.Add(this.RB_Good2);
@@ -185,7 +198,8 @@
         private System.Windows.Forms.RadioButton RB_Good2;
         private System.Windows.Forms.RadioButton RB_Good3;
         private System.Windows.Forms.RadioButton RB_Good4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CB_Categories;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BTN_Cancel;
     }
 }
