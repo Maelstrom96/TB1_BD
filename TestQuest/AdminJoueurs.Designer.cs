@@ -42,7 +42,7 @@
             this.BTN_Submit.Location = new System.Drawing.Point(128, 102);
             this.BTN_Submit.Name = "BTN_Submit";
             this.BTN_Submit.Size = new System.Drawing.Size(75, 23);
-            this.BTN_Submit.TabIndex = 0;
+            this.BTN_Submit.TabIndex = 4;
             this.BTN_Submit.Text = "Soumettre";
             this.BTN_Submit.UseVisualStyleBackColor = true;
             this.BTN_Submit.Click += new System.EventHandler(this.BTN_Submit_Click);
@@ -59,14 +59,14 @@
             this.TXB_Prenom.Location = new System.Drawing.Point(102, 38);
             this.TXB_Prenom.Name = "TXB_Prenom";
             this.TXB_Prenom.Size = new System.Drawing.Size(100, 20);
-            this.TXB_Prenom.TabIndex = 1;
+            this.TXB_Prenom.TabIndex = 2;
             // 
             // TXB_Name
             // 
             this.TXB_Name.Location = new System.Drawing.Point(102, 64);
             this.TXB_Name.Name = "TXB_Name";
             this.TXB_Name.Size = new System.Drawing.Size(100, 20);
-            this.TXB_Name.TabIndex = 1;
+            this.TXB_Name.TabIndex = 3;
             // 
             // label1
             // 
@@ -74,7 +74,7 @@
             this.label1.Location = new System.Drawing.Point(13, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Alias";
             // 
             // label2
@@ -83,7 +83,7 @@
             this.label2.Location = new System.Drawing.Point(13, 41);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Prénom";
             // 
             // label3
@@ -92,7 +92,7 @@
             this.label3.Location = new System.Drawing.Point(13, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 13);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Nom";
             // 
             // AdminJoueurs
