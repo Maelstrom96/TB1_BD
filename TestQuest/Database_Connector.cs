@@ -89,11 +89,19 @@ namespace TestQuest
 
                 using (OracleDataReader reader = questionListe.ExecuteReader())
                 {
+                    uint uid = 0;
+                    String quest = null;
+                    char code = '0';
+
                     while (reader.Read())
                     {
-                        repList.Add(new Reponse(uint.Parse(reader.GetInt32(3).ToString()), reader.GetString(4), reader.GetBoolean(5)));
+                        uid = uint.Parse(reader.GetDecimal(0).ToString());
+                        quest = reader.GetString(1);
+                        code = char.Parse(reader.GetString(2));
+
+                        repList.Add(new Reponse(uint.Parse(reader.GetDecimal(3).ToString()), reader.GetString(4), reader.GetString(5).Equals("Y")));
                     }
-                    question = new Question(uint.Parse(reader.GetInt32(0).ToString()), reader.GetString(1), reader.GetChar(2), repList.ToArray());
+                    question = new Question(uid, quest, code, repList.ToArray());
                 }
 
                 return question;

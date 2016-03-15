@@ -35,6 +35,11 @@ public class Question {
         throw new Exception("No answer");
     }
 
+    public String GetQuestion()
+    {
+        return question;
+    }
+
 	public Reponse GetBonneReponse() {
 		return bonneReponse;
 	}

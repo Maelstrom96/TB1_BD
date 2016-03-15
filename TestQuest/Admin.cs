@@ -56,5 +56,14 @@ namespace TestQuest
             btn_pressed = 2;
             dgv_admin.DataSource = Database_Connector.Select.Players();
         }
+
+        private void BTN_Modifier_Click(object sender, EventArgs e)
+        {
+            if (btn_pressed == 1 && dgv_admin.SelectedRows.Count > 0)
+            {
+                AdminQuestions questions = new AdminQuestions(Database_Connector.Select.Question(int.Parse(dgv_admin.SelectedRows[0].Cells[0].Value.ToString())));
+                questions.ShowDialog();
+            }
+        }
     }
 }
