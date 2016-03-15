@@ -69,34 +69,35 @@ namespace TestQuest
                 return dt;
             }
 
-            //public static Question Question(int NumQuestion)
-            //{
-            //    List<Reponse> repList = new List<Reponse>();
+            public static Question Question(int NumQuestion)
+            {
+                List<Reponse> repList = new List<Reponse>();
+                Question question;
 
-            //    OracleCommand questionListe = new OracleCommand("GESTIONSQUESTIONS", Database_Connector.GetConnection());
-            //    questionListe.CommandText = "GESTIONSQUESTIONS.GETQ";
-            //    questionListe.CommandType = CommandType.StoredProcedure;
+                OracleCommand questionListe = new OracleCommand("GESTIONSQUESTIONS", Database_Connector.GetConnection());
+                questionListe.CommandText = "GESTIONSQUESTIONS.GETQ";
+                questionListe.CommandType = CommandType.StoredProcedure;
 
-            //    OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
-            //    oraReturn.Direction = ParameterDirection.ReturnValue;
-            //    questionListe.Parameters.Add(oraReturn);
+                OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
+                oraReturn.Direction = ParameterDirection.ReturnValue;
+                questionListe.Parameters.Add(oraReturn);
 
-            //    OracleParameter oraParam = new OracleParameter("QCODE", OracleDbType.Int32);
-            //    oraParam.Direction = ParameterDirection.Input;
-            //    oraParam.Value = NumQuestion;
-            //    questionListe.Parameters.Add(oraParam);
+                OracleParameter oraParam = new OracleParameter("QCODE", OracleDbType.Int32);
+                oraParam.Direction = ParameterDirection.Input;
+                oraParam.Value = NumQuestion;
+                questionListe.Parameters.Add(oraParam);
 
-            //    using (OracleDataReader reader = questionListe.ExecuteReader())
-            //    {
-            //        while (reader.Read())
-            //        {
-            //            //repList
-            //        }
-            //    }
+                using (OracleDataReader reader = questionListe.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        repList.Add(new Reponse(uint.Parse(reader.GetInt32(3).ToString()), reader.GetString(4), reader.GetBoolean(5)));
+                    }
+                    question = new Question(uint.Parse(reader.GetInt32(0).ToString()), reader.GetString(1), reader.GetChar(2), repList.ToArray());
+                }
 
-            //    return repList;
-
-            //}
+                return question;
+            }
 
             //SELECT FOR CATEGORIES TO POPULATE THE COMBO BOX IN ADD QUESTIONS (ADMINQUESTIONS)
             public static List<String> Categories()

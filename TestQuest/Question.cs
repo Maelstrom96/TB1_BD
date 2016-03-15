@@ -8,67 +8,45 @@ using System.Text;
  * 
  */
 public class Question {
-	/**
-	 * 
-	 */
 	private uint ID;
-
-	/**
-	 * 
-	 */
 	private string question;
-
-	/**
-	 * 
-	 */
-	private char categorie;
-
-	/**
-	 * 
-	 */
-	private Reponse[] Reponse;
-
-	/**
-	 * 
-	 */
-	private Reponse BonneReponse;
+	private char codeCategorie;
+	private Reponse[] reponses;
+	private Reponse bonneReponse;
 
 	/**
 	 * @param Reponses 
 	 * @param Question
 	 */
-	public Question(Reponse[] Reponses, string Question) {
-		// TODO implement here
+	public Question(uint Id, string Question, char CodeCategorie, Reponse[] Reponses) {
+        ID = Id;
+        question = Question;
+        codeCategorie = CodeCategorie;
+        reponses = Reponses;
+        bonneReponse = FindBonneReponse();
 	}
 
-	/**
-	 * @return
-	 */
+    private Reponse FindBonneReponse()
+    {
+        foreach(Reponse reponse in reponses)
+        {
+            if (reponse.EstBonne()) return reponse;
+        }
+        throw new Exception("No answer");
+    }
+
 	public Reponse GetBonneReponse() {
-		// TODO implement here
-		return null;
+		return bonneReponse;
 	}
 
-	/**
-	 * @return
-	 */
 	public Reponse[] GetReponses() {
-		// TODO implement here
-		return null;
+		return reponses;
 	}
 
-	/**
-	 * @return
-	 */
 	public override int GetHashCode() {
-		// TODO implement here
 		return 0;
 	}
 
-	/**
-	 * @param other 
-	 * @return
-	 */
 	public bool Equals(Question other) {
 		// TODO implement here
 		return false;
