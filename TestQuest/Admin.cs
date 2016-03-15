@@ -56,5 +56,29 @@ namespace TestQuest
             btn_pressed = 2;
             dgv_admin.DataSource = Database_Connector.Select.Players();
         }
+
+        private void BTN_Modifier_Click(object sender, EventArgs e)
+        {
+            if(btn_pressed == 1)
+            {
+
+            }
+            if (btn_pressed == 2)
+            {
+
+            }
+        }
+
+        private void BTN_Delete_Click(object sender, EventArgs e)
+        {
+            if (btn_pressed == 1)
+            {
+
+            }
+            if (btn_pressed == 2)
+            {
+
+            }
+        }
     }
 }
