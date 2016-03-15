@@ -51,6 +51,7 @@
             this.BTN_Submit.TabIndex = 0;
             this.BTN_Submit.Text = "Soumettre";
             this.BTN_Submit.UseVisualStyleBackColor = true;
+            this.BTN_Submit.Click += new System.EventHandler(this.BTN_Submit_Click);
             // 
             // TXT_Question
             // 

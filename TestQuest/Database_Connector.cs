@@ -69,34 +69,34 @@ namespace TestQuest
                 return dt;
             }
 
-            public static Question Question(int NumQuestion)
-            {
-                List<Reponse> repList = new List<Reponse>();
+            //public static Question Question(int NumQuestion)
+            //{
+            //    List<Reponse> repList = new List<Reponse>();
 
-                OracleCommand questionListe = new OracleCommand("GESTIONSQUESTIONS", Database_Connector.GetConnection());
-                questionListe.CommandText = "GESTIONSQUESTIONS.GETQ";
-                questionListe.CommandType = CommandType.StoredProcedure;
+            //    OracleCommand questionListe = new OracleCommand("GESTIONSQUESTIONS", Database_Connector.GetConnection());
+            //    questionListe.CommandText = "GESTIONSQUESTIONS.GETQ";
+            //    questionListe.CommandType = CommandType.StoredProcedure;
 
-                OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
-                oraReturn.Direction = ParameterDirection.ReturnValue;
-                questionListe.Parameters.Add(oraReturn);
+            //    OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
+            //    oraReturn.Direction = ParameterDirection.ReturnValue;
+            //    questionListe.Parameters.Add(oraReturn);
 
-                OracleParameter oraParam = new OracleParameter("QCODE", OracleDbType.Int32);
-                oraParam.Direction = ParameterDirection.Input;
-                oraParam.Value = NumQuestion;
-                questionListe.Parameters.Add(oraParam);
+            //    OracleParameter oraParam = new OracleParameter("QCODE", OracleDbType.Int32);
+            //    oraParam.Direction = ParameterDirection.Input;
+            //    oraParam.Value = NumQuestion;
+            //    questionListe.Parameters.Add(oraParam);
 
-                using (OracleDataReader reader = questionListe.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        //repList
-                    }
-                }
+            //    using (OracleDataReader reader = questionListe.ExecuteReader())
+            //    {
+            //        while (reader.Read())
+            //        {
+            //            //repList
+            //        }
+            //    }
 
-                return 
+            //    return repList;
 
-            }
+            //}
 
             //SELECT FOR CATEGORIES TO POPULATE THE COMBO BOX IN ADD QUESTIONS (ADMINQUESTIONS)
             public static List<String> Categories()
@@ -148,7 +148,71 @@ namespace TestQuest
         public static class Insert
         {
             //INSERT QUESTIONS WITH ANSWER IN (ADMINQUESTIONS)
-            //TODO
+            public static void Questions(String question, char selectedCategorie)
+            {
+                OracleCommand questionsAdd = new OracleCommand("GESTIONSQUESTIONS", Database_Connector.GetConnection());
+                questionsAdd.CommandText = "GESTIONSQUESTIONS.INSERTION";
+                questionsAdd.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter paramQuestion = new OracleParameter("QUESTION", OracleDbType.Varchar2);
+                paramQuestion.Direction = ParameterDirection.Input;
+                paramQuestion.Value = question;
+                questionsAdd.Parameters.Add(paramQuestion);
+
+                OracleParameter paramCategorie = new OracleParameter("CATEGORIES", OracleDbType.Varchar2);
+                paramCategorie.Direction = ParameterDirection.Input;
+                paramCategorie.Value = selectedCategorie;
+                questionsAdd.Parameters.Add(paramCategorie);
+
+                questionsAdd.ExecuteNonQuery();
+
+            }
+
+            //INSERT ANSWER IN  WITH A QUERY TO GET THE NUMQUESTION WE JUST CREATED (ADMINQUESTIONS)
+            public static void Answer(String question, String answer, bool goodAnswer)
+            {
+                string num;
+
+                //GET QUESTION NUMBER THAT WE JUST CREATED TO INSERT THE ANSWER ACCORDINGLY TO THE QUESTION
+                OracleCommand getNumQuest = new OracleCommand("GESTIONSQUESTIONS", Database_Connector.GetConnection());
+                getNumQuest.CommandText = "GESTIONSQUESTIONS.GETNUMQ";
+                getNumQuest.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter numQuest = new OracleParameter("NUMQUESTION", OracleDbType.Int32);
+                numQuest.Direction = ParameterDirection.ReturnValue;
+                getNumQuest.Parameters.Add(numQuest);
+
+                OracleParameter getQuestion = new OracleParameter("QUESTION", OracleDbType.Varchar2);
+                getQuestion.Direction = ParameterDirection.Input;
+                getQuestion.Value = question;
+                getNumQuest.Parameters.Add(getQuestion);
+
+                getNumQuest.ExecuteScalar();
+                num = getNumQuest.Parameters["NUMQUESTION"].Value.ToString();
+
+                //INSERT THE ANSWER ACCORDINGLY TO THE QUESTION WE JUST INSERTED
+                OracleCommand answerAdd = new OracleCommand("GESTIONSREPONSES", Database_Connector.GetConnection());
+                answerAdd.CommandText = "GESTIONSREPONSES.INSERTION";
+                answerAdd.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter answerToAdd = new OracleParameter("ANSWER", OracleDbType.Varchar2);
+                answerToAdd.Direction = ParameterDirection.Input;
+                answerToAdd.Value = answer;
+                answerAdd.Parameters.Add(answerToAdd);
+
+                OracleParameter good = new OracleParameter("GOOD", OracleDbType.Char);
+                good.Direction = ParameterDirection.Input;
+                if (goodAnswer) good.Value = "Y";
+                else good.Value = "N";
+                answerAdd.Parameters.Add(good);
+
+                OracleParameter numQuestion = new OracleParameter("NUMQUESTION", OracleDbType.Varchar2);
+                numQuestion.Direction = ParameterDirection.Input;
+                numQuestion.Value = num;
+                answerAdd.Parameters.Add(numQuestion);
+
+                answerAdd.ExecuteNonQuery();
+            }
 
             //INSERT PLAYERS IN (ADMINPLAYERS)
             public static void Players(Joueur player)
