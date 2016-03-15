@@ -83,7 +83,6 @@
             this.BTN_Delete.Text = "Supprimer";
             this.BTN_Delete.UseVisualStyleBackColor = true;
             this.BTN_Delete.Visible = false;
-            this.BTN_Delete.Click += new System.EventHandler(this.BTN_Delete_Click);
             // 
             // BTN_Modifier
             // 
