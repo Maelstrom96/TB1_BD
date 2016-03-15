@@ -37,6 +37,7 @@ namespace TestQuest
             modificationMode = true;
 
             TXT_Question.Text = question_.GetQuestion();
+            CB_Categories.Text = CategorieQuestions.GetName(question_.GetCategorie());
 
             foreach(Reponse reponse in question_.GetReponses())
             {
@@ -53,18 +54,7 @@ namespace TestQuest
                 }
                 i++;
             }
-        }
-
-        private char GetColor()
-        {
-            switch(CB_Categories.SelectedItem.ToString().Trim())
-            {
-                case "Sports":          return 'O';
-                case "Science":         return 'V';
-                case "Geographie":      return 'B';
-                case "Histoire":        return 'R';
-                default:                return 'w';
-            }
+            label1.Focus();
         }
 
         private void BTN_Cancel_Click(object sender, EventArgs e)
@@ -74,7 +64,7 @@ namespace TestQuest
 
         private void BTN_Submit_Click(object sender, EventArgs e)
         {
-            selectedCategorie = GetColor();
+            selectedCategorie = CategorieQuestions.GetColor(CB_Categories.SelectedItem.ToString().Trim());
             question = TXT_Question.Text;
 
             if (selectedCategorie != 'w')

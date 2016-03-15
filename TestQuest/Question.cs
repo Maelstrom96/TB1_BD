@@ -40,6 +40,11 @@ public class Question {
         return question;
     }
 
+    public char GetCategorie()
+    {
+        return codeCategorie;
+    }
+
 	public Reponse GetBonneReponse() {
 		return bonneReponse;
 	}

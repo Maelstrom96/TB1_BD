@@ -61,6 +61,29 @@ public class CategorieQuestions {
 	public void Equals(char other) {
 		// TODO implement here
 	}
+    public static char GetColor(String categorie)
+    {
+        switch (categorie)
+        {
+            case "Sports": return 'O';
+            case "Science": return 'V';
+            case "Geographie": return 'B';
+            case "Histoire": return 'R';
+            default: return 'w';
+        }
+    }
+
+    public static String GetName(char color)
+    {
+        switch (color)
+        {
+            case 'O': return "Sports";
+            case 'V': return "Science";
+            case 'B': return "Geographie";
+            case 'R': return "Histoire";
+            default: return "Joker";
+        }
+    }
 }
 
 public enum Categories
