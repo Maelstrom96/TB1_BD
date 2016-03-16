@@ -151,6 +151,54 @@ namespace TestQuest
 
         public static class Delete
         {
+
+            //DELETE THE ANSWER WITH THE NUMQUESTION ID
+            public static void Answer(int num)
+            {
+                OracleCommand answerDelete = new OracleCommand("GESTIONSREPONSES", Database_Connector.GetConnection());
+                answerDelete.CommandText = "GESTIONSREPONSES.SUPPRIMER";
+                answerDelete.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter numQuestion = new OracleParameter("QUESTION", OracleDbType.Int32);
+                numQuestion.Direction = ParameterDirection.Input;
+                numQuestion.Value = num;
+                answerDelete.Parameters.Add(numQuestion);
+
+                answerDelete.ExecuteNonQuery();
+            }
+
+            //DELETE THE QUESTION WITH THE NUMQUESTION ID
+            public static void Question(int num)
+            {
+                OracleCommand questionDelete = new OracleCommand("GESTIONSQUESTIONS", Database_Connector.GetConnection());
+                questionDelete.CommandText = "GESTIONSQUESTIONS.SUPPRIMER";
+                questionDelete.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter numQuestion = new OracleParameter("QUESTION", OracleDbType.Int32);
+                numQuestion.Direction = ParameterDirection.Input;
+                numQuestion.Value = num;
+                questionDelete.Parameters.Add(numQuestion);
+
+                questionDelete.ExecuteNonQuery();
+            }
+
+            //DELETE THE PLAYER WITH THE ALIAS OF THE PLAYER
+
+            //TODO
+            //CHECK IF ITS WORKING************************************************************************
+            public static void Player(String pseudo)
+            {
+                OracleCommand questionDelete = new OracleCommand("GESTIONSPLAYERS", Database_Connector.GetConnection());
+                questionDelete.CommandText = "GESTIONSPLAYERS.SUPPRIMER";
+                questionDelete.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter alias = new OracleParameter("QUESTION", OracleDbType.Varchar2);
+                alias.Direction = ParameterDirection.Input;
+                alias.Value = pseudo;
+                questionDelete.Parameters.Add(alias);
+
+                questionDelete.ExecuteNonQuery();
+            }
             
         }
 

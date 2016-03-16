@@ -51,7 +51,7 @@ namespace TestQuest
         {
             BTN_Add.Visible = true;
             BTN_Delete.Visible = true;
-            BTN_Modifier.Visible = true;
+            BTN_Modifier.Visible = false;
 
             btn_pressed = 2;
             dgv_admin.DataSource = Database_Connector.Select.Players();
@@ -63,6 +63,21 @@ namespace TestQuest
             {
                 AdminQuestions questions = new AdminQuestions(Database_Connector.Select.Question(int.Parse(dgv_admin.SelectedRows[0].Cells[0].Value.ToString())));
                 questions.ShowDialog();
+            }
+        }
+
+        private void BTN_Delete_Click(object sender, EventArgs e)
+        {
+            if(btn_pressed == 1 && dgv_admin.SelectedRows.Count > 0)
+            {
+                Database_Connector.Delete.Answer(int.Parse(dgv_admin.SelectedRows[0].Cells[0].Value.ToString()));
+                Database_Connector.Delete.Question(int.Parse(dgv_admin.SelectedRows[0].Cells[0].Value.ToString()));
+                MessageBox.Show("Question supprimer");
+            }
+            if (btn_pressed == 2 && dgv_admin.SelectedRows.Count > 0)
+            {
+                Database_Connector.Delete.Player(dgv_admin.SelectedRows[0].Cells[0].Value.ToString());
+                MessageBox.Show("Joueur supprimer");
             }
         }
     }
