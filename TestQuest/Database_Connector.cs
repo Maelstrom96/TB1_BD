@@ -51,6 +51,31 @@ namespace TestQuest
 
         public static class Select
         {
+            public static Joueur Joueur(String alias)
+            {
+                OracleCommand joueurCommand = new OracleCommand("GESTIONSPLAYERS", Database_Connector.GetConnection());
+                joueurCommand.CommandText = "GESTIONSPLAYERS.GETP";
+                joueurCommand.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
+                oraReturn.Direction = ParameterDirection.ReturnValue;
+                joueurCommand.Parameters.Add(oraReturn);
+
+                OracleParameter oraParam = new OracleParameter("PALIAS", OracleDbType.Varchar2);
+                oraParam.Direction = ParameterDirection.Input;
+                oraParam.Value = alias;
+                joueurCommand.Parameters.Add(oraParam);
+
+                using (OracleDataReader reader = joueurCommand.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new Joueur(reader.GetString(0),reader.GetString(1),reader.GetString(2));
+                    }
+                    throw new Exception("PLAYERNOTFOUND");
+                }
+            }
+
             //() = FORM NAME
             //SELECT FOR QUESTIONS TO PUPOLATE THE DGV IN (ADMIN)
             public static DataTable Questions()
