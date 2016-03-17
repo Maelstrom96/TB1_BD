@@ -32,7 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Oracle.DataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -66,19 +66,34 @@
     <Compile Include="CategorieQuestions.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Database_Connector.cs" />
+    <Compile Include="Exceptions\PlayerAlreadyExistException.cs" />
     <Compile Include="GameForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GameManager.cs" />
+    <Compile Include="GameSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GameSetupForm.Designer.cs">
+      <DependentUpon>GameSetupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="GestionQuestions.cs" />
     <Compile Include="Jeu.cs" />
     <Compile Include="Joueur.cs" />
-    <Compile Include="NoQuestionException.cs" />
+    <Compile Include="Exceptions\NoQuestionException.cs" />
+    <Compile Include="Exceptions\PlayerNotFoundException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs" />
+    <Compile Include="QuestionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuestionForm.Designer.cs">
+      <DependentUpon>QuestionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reponse.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="Settings.cs" />
@@ -95,6 +110,9 @@
     <EmbeddedResource Include="GameForm.resx">
       <DependentUpon>GameForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GameSetupForm.resx">
+      <DependentUpon>GameSetupForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -105,6 +123,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QuestionForm.resx">
+      <DependentUpon>QuestionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

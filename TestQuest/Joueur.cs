@@ -15,6 +15,11 @@ public class Joueur {
         Prenom = prenom;
 	}
 
+    public Joueur(string alias)
+    {
+
+    }
+
 	public string GetAlias() {
         return Alias;
 	}
