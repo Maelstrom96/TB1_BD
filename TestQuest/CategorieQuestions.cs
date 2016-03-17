@@ -9,55 +9,27 @@ using System.Text;
  */
 public class CategorieQuestions {
 
-	/**
-	 * 
-	 */
+    private char Categorie;
+    private List<Question> ListQuestions;
+
 	public CategorieQuestions() {
 	}
+	
 
-	/**
-	 * 
-	 */
-	private char Categorie;
-
-	/**
-	 * 
-	 */
-	private List<Question> ListQuestions;
-
-	/**
-	 * @return
-	 */
 	public char GetCategorie() {
 		// TODO implement here
 		return '\0';
 	}
-
-	/**
-	 * @return
-	 */
 	public Question GetQuestionAleatoire() {
 		// TODO implement here
 		return null;
 	}
-
-	/**
-	 * @param list
-	 */
 	public void AjouterQuestions(List<Question> list) {
 		// TODO implement here
 	}
-
-	/**
-	 * 
-	 */
 	public void Clear() {
 		// TODO implement here
 	}
-
-	/**
-	 * @param other
-	 */
 	public void Equals(char other) {
 		// TODO implement here
 	}
