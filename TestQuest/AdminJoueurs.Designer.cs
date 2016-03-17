@@ -107,7 +107,10 @@
             this.Controls.Add(this.TXB_Prenom);
             this.Controls.Add(this.TXB_Alias);
             this.Controls.Add(this.BTN_Submit);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "AdminJoueurs";
+            this.ShowIcon = false;
             this.Text = "AdminJoueurs";
             this.ResumeLayout(false);
             this.PerformLayout();

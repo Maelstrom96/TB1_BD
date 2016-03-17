@@ -13,13 +13,14 @@ namespace TestQuest
 {
     public partial class GameForm : Form
     {
+        private Joueur[] joueurs;
         private Wheel wheel;
         private BackgroundWorker bw = new BackgroundWorker();
 
-        public GameForm()
+        public GameForm(Joueur[] joueurs_)
         {
             InitializeComponent();
-            Database_Connector.OpenConnection();
+            joueurs = joueurs_;
 
             this.SetStyle(
                 ControlStyles.AllPaintingInWmPaint |

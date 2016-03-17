@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TestQuest.Exceptions;
 
 namespace TestQuest
 {
@@ -40,7 +41,7 @@ namespace TestQuest
 
         static public OracleConnection GetConnection()
         {
-            if (conn_.State == ConnectionState.Closed) conn_.Open();
+            if (conn_.State == ConnectionState.Closed) OpenConnection();
             return conn_;
         }
 
@@ -72,7 +73,7 @@ namespace TestQuest
                     {
                         return new Joueur(reader.GetString(0),reader.GetString(1),reader.GetString(2));
                     }
-                    throw new Exception("PLAYERNOTFOUND");
+                    throw new PlayerNotFoundException(alias);
                 }
             }
 
@@ -297,8 +298,18 @@ namespace TestQuest
             }
 
             //INSERT PLAYERS IN (ADMINPLAYERS)
-            public static void Players(Joueur player)
+            public static void Player(Joueur player)
             {
+                try
+                {
+                    Database_Connector.Select.Joueur(player.GetAlias());
+                    throw new PlayerAlreadyExistException(player.GetAlias());
+                }
+                catch(PlayerNotFoundException pnf)
+                {
+                    //Nothing
+                }
+
                 OracleCommand playersAdd = new OracleCommand("GESTIONSPLAYERS", Database_Connector.GetConnection());
                 playersAdd.CommandText = "GESTIONSPLAYERS.INSERTION";
                 playersAdd.CommandType = CommandType.StoredProcedure;

@@ -28,14 +28,14 @@ public class GestionQuestions {
 	/**
 	 * @param question
 	 */
-	public void AjouterQuestion(Question question) {
+	private void AjouterQuestion(Question question) {
 		// TODO implement here
 	}
 
 	/**
 	 * @param question
 	 */
-	public void SupprimerQuestion(Question question) {
+	private void SupprimerQuestion(Question question) {
 		// TODO implement here
 	}
 
@@ -60,8 +60,9 @@ public class GestionQuestions {
 	 * @param Qty 
 	 * @return
 	 */
-	public List<Question> GetQuestionsFromDB(uint Qty) {
-		// TODO implement here
+    public List<Question> GetQuestionsFromDB(uint Qty, Categories cat)
+    {
+
 		return null;
 	}
 

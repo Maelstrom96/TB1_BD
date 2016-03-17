@@ -31,15 +31,11 @@
             this.button3 = new System.Windows.Forms.Button();
             this.lb_Categorie = new System.Windows.Forms.Label();
             this.BTN_Admin = new System.Windows.Forms.Button();
-            this.bt_Rep1 = new System.Windows.Forms.Button();
-            this.bt_Rep2 = new System.Windows.Forms.Button();
-            this.bt_Rep3 = new System.Windows.Forms.Button();
-            this.bt_Rep4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(298, 602);
+            this.button3.Location = new System.Drawing.Point(296, 607);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(176, 23);
             this.button3.TabIndex = 2;
@@ -66,47 +62,11 @@
             this.BTN_Admin.UseVisualStyleBackColor = true;
             this.BTN_Admin.Click += new System.EventHandler(this.BTN_Admin_Click);
             // 
-            // bt_Rep1
-            // 
-            this.bt_Rep1.Location = new System.Drawing.Point(23, 434);
-            this.bt_Rep1.Name = "bt_Rep1";
-            this.bt_Rep1.Size = new System.Drawing.Size(438, 32);
-            this.bt_Rep1.TabIndex = 5;
-            this.bt_Rep1.UseVisualStyleBackColor = true;
-            // 
-            // bt_Rep2
-            // 
-            this.bt_Rep2.Location = new System.Drawing.Point(23, 472);
-            this.bt_Rep2.Name = "bt_Rep2";
-            this.bt_Rep2.Size = new System.Drawing.Size(438, 32);
-            this.bt_Rep2.TabIndex = 5;
-            this.bt_Rep2.UseVisualStyleBackColor = true;
-            // 
-            // bt_Rep3
-            // 
-            this.bt_Rep3.Location = new System.Drawing.Point(23, 510);
-            this.bt_Rep3.Name = "bt_Rep3";
-            this.bt_Rep3.Size = new System.Drawing.Size(438, 32);
-            this.bt_Rep3.TabIndex = 5;
-            this.bt_Rep3.UseVisualStyleBackColor = true;
-            // 
-            // bt_Rep4
-            // 
-            this.bt_Rep4.Location = new System.Drawing.Point(23, 548);
-            this.bt_Rep4.Name = "bt_Rep4";
-            this.bt_Rep4.Size = new System.Drawing.Size(438, 32);
-            this.bt_Rep4.TabIndex = 5;
-            this.bt_Rep4.UseVisualStyleBackColor = true;
-            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 642);
-            this.Controls.Add(this.bt_Rep4);
-            this.Controls.Add(this.bt_Rep3);
-            this.Controls.Add(this.bt_Rep2);
-            this.Controls.Add(this.bt_Rep1);
             this.Controls.Add(this.BTN_Admin);
             this.Controls.Add(this.lb_Categorie);
             this.Controls.Add(this.button3);
@@ -129,10 +89,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label lb_Categorie;
         private System.Windows.Forms.Button BTN_Admin;
-        private System.Windows.Forms.Button bt_Rep1;
-        private System.Windows.Forms.Button bt_Rep2;
-        private System.Windows.Forms.Button bt_Rep3;
-        private System.Windows.Forms.Button bt_Rep4;
     }
 }
 
