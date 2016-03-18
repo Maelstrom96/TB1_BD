@@ -13,7 +13,6 @@ public class Question {
 	private char codeCategorie;
 	private Reponse[] reponses;
 	private Reponse bonneReponse;
-    private int id;
 
 	/**
 	 * @param Reponses 
@@ -27,9 +26,9 @@ public class Question {
         bonneReponse = FindBonneReponse();
 	}
 
-    public Question(int Id, string Question, char Categorie)
+    public Question(uint Id, string Question, char Categorie)
     {
-        id = Id;
+        ID = Id;
         question = Question;
         codeCategorie = Categorie;
     }
@@ -39,7 +38,7 @@ public class Question {
         {
             if (reponse.EstBonne()) return reponse;
         }
-        throw new Exception("No answer");
+        throw new Exception("Il n'y à pas de bonne réponse pour la question #" + ID + " dans la BD - Besoin de réparer.");
     }
 
     public String GetQuestion()

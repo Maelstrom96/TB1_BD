@@ -15,6 +15,7 @@ namespace TestQuest
         private static Random rnd = new Random();
         private Question question;
         private Button[] lb;
+        private DialogResult dr = DialogResult.Abort;
 
         public QuestionForm(Question question_, String name)
         {
@@ -42,9 +43,32 @@ namespace TestQuest
             }
         }
 
-        private void QuestionForm_Load(object sender, EventArgs e)
+        private void bt_Answer_Click(object sender, EventArgs e)
         {
+            if (sender is Button)
+            {
+                Button bt = (Button)sender;
+                if (bt.Text == question.GetBonneReponse().GetReponse())
+                {
+                    bt.BackColor = Color.Green;
+                    timer.Enabled = true;
+                }
+                else
+                {
+                    bt.BackColor = Color.Red;
+                    timer.Enabled = true;
 
+                    foreach(Button btn in lb)
+                    {
+                        if (btn.Text == question.GetBonneReponse().GetReponse()) btn.BackColor = Color.Green;
+                    }
+                }
+            }
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            DialogResult = dr;
         }
     }
 }

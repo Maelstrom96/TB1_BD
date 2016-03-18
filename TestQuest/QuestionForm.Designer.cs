@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.bt_Rep4 = new System.Windows.Forms.Button();
             this.bt_Rep3 = new System.Windows.Forms.Button();
             this.bt_Rep2 = new System.Windows.Forms.Button();
             this.bt_Rep1 = new System.Windows.Forms.Button();
             this.lb_Question = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // bt_Rep4
@@ -43,6 +45,7 @@
             this.bt_Rep4.Size = new System.Drawing.Size(438, 32);
             this.bt_Rep4.TabIndex = 6;
             this.bt_Rep4.UseVisualStyleBackColor = true;
+            this.bt_Rep4.Click += new System.EventHandler(this.bt_Answer_Click);
             // 
             // bt_Rep3
             // 
@@ -52,6 +55,7 @@
             this.bt_Rep3.Size = new System.Drawing.Size(438, 32);
             this.bt_Rep3.TabIndex = 7;
             this.bt_Rep3.UseVisualStyleBackColor = true;
+            this.bt_Rep3.Click += new System.EventHandler(this.bt_Answer_Click);
             // 
             // bt_Rep2
             // 
@@ -61,6 +65,7 @@
             this.bt_Rep2.Size = new System.Drawing.Size(438, 32);
             this.bt_Rep2.TabIndex = 8;
             this.bt_Rep2.UseVisualStyleBackColor = true;
+            this.bt_Rep2.Click += new System.EventHandler(this.bt_Answer_Click);
             // 
             // bt_Rep1
             // 
@@ -70,6 +75,7 @@
             this.bt_Rep1.Size = new System.Drawing.Size(438, 32);
             this.bt_Rep1.TabIndex = 9;
             this.bt_Rep1.UseVisualStyleBackColor = true;
+            this.bt_Rep1.Click += new System.EventHandler(this.bt_Answer_Click);
             // 
             // lb_Question
             // 
@@ -80,6 +86,11 @@
             this.lb_Question.TabIndex = 10;
             this.lb_Question.Text = "Question";
             this.lb_Question.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // timer
+            // 
+            this.timer.Interval = 2500;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // QuestionForm
             // 
@@ -109,5 +120,6 @@
         private System.Windows.Forms.Button bt_Rep2;
         private System.Windows.Forms.Button bt_Rep1;
         private System.Windows.Forms.Label lb_Question;
+        private System.Windows.Forms.Timer timer;
     }
 }
