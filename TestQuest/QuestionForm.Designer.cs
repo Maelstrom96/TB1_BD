@@ -36,7 +36,7 @@
             // 
             // bt_Rep4
             // 
-            this.bt_Rep4.Location = new System.Drawing.Point(7, 431);
+            this.bt_Rep4.Location = new System.Drawing.Point(8, 348);
             this.bt_Rep4.Name = "bt_Rep4";
             this.bt_Rep4.Size = new System.Drawing.Size(438, 32);
             this.bt_Rep4.TabIndex = 6;
@@ -44,7 +44,7 @@
             // 
             // bt_Rep3
             // 
-            this.bt_Rep3.Location = new System.Drawing.Point(7, 393);
+            this.bt_Rep3.Location = new System.Drawing.Point(8, 310);
             this.bt_Rep3.Name = "bt_Rep3";
             this.bt_Rep3.Size = new System.Drawing.Size(438, 32);
             this.bt_Rep3.TabIndex = 7;
@@ -52,7 +52,7 @@
             // 
             // bt_Rep2
             // 
-            this.bt_Rep2.Location = new System.Drawing.Point(7, 355);
+            this.bt_Rep2.Location = new System.Drawing.Point(8, 272);
             this.bt_Rep2.Name = "bt_Rep2";
             this.bt_Rep2.Size = new System.Drawing.Size(438, 32);
             this.bt_Rep2.TabIndex = 8;
@@ -60,7 +60,7 @@
             // 
             // bt_Rep1
             // 
-            this.bt_Rep1.Location = new System.Drawing.Point(7, 317);
+            this.bt_Rep1.Location = new System.Drawing.Point(8, 234);
             this.bt_Rep1.Name = "bt_Rep1";
             this.bt_Rep1.Size = new System.Drawing.Size(438, 32);
             this.bt_Rep1.TabIndex = 9;
@@ -70,7 +70,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 479);
+            this.ClientSize = new System.Drawing.Size(454, 388);
             this.ControlBox = false;
             this.Controls.Add(this.bt_Rep4);
             this.Controls.Add(this.bt_Rep3);
@@ -82,6 +82,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "QuestionForm";
+            this.Load += new System.EventHandler(this.QuestionForm_Load);
             this.ResumeLayout(false);
 
         }

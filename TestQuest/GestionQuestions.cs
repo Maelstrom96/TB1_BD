@@ -26,9 +26,8 @@ public class GestionQuestions {
 
 	}
 
-	public Question GetQuestionAleatoire(char Category) {
-
-		return null;
+	public Question GetQuestionAleatoire(String Category) {
+        return ListCatQuestions.First((a => a.GetNomCategorie() == Category)).GetQuestionAleatoire();
 	}
 	private void GetQuestionsFromDB() {
         DataTable dtQuest = Database_Connector.Select.Questions();

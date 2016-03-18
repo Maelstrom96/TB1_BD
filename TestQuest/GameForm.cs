@@ -32,6 +32,8 @@ namespace TestQuest
             wheel = new Wheel(lb_Categorie, this.Width / 2);
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_SpinComplete);
+
+            SetPlayerName();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -72,19 +74,14 @@ namespace TestQuest
 
         private void bw_SpinComplete(object sender, RunWorkerCompletedEventArgs e)
         {
-            LBL_Questions.Text = "";
             lb_Categorie.Text = wheel.GetCurrentPick().ToString();
-            quest = Database_Connector.Select.RandomQuestion(CategorieQuestions.GetColor(lb_Categorie.Text));
-            Reponse[] rep = quest.GetReponses();
-            LBL_Questions.Text = quest.GetQuestion();
-            //BTN_Answer1.Visible = true;
-            //BTN_Answer1.Text = rep[0].GetReponse().ToString();
-            //BTN_Answer2.Visible = true;
-            //BTN_Answer2.Text = rep[1].GetReponse().ToString();
-            //BTN_Answer3.Visible = true;
-            //BTN_Answer3.Text = rep[2].GetReponse().ToString();
-            //BTN_Answer4.Visible = true;
-            //BTN_Answer4.Text = rep[3].GetReponse().ToString();
+            gm.CurrentPlayerPlay(wheel.GetCurrentPick().ToString());
+        }
+
+        private void SetPlayerName()
+        {
+            lb_Joueur1.Text = gm.GetPlayers()[0].GetAlias();
+            lb_Joueur2.Text = gm.GetPlayers()[1].GetAlias();
         }
 
         private void BTN_Admin_Click(object sender, EventArgs e)

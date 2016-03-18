@@ -12,9 +12,16 @@ namespace TestQuest
 {
     public partial class QuestionForm : Form
     {
-        public QuestionForm()
+        public QuestionForm(Question question, String name)
         {
             InitializeComponent();
+            Text = "Question (" + CategorieQuestions.GetName(question.GetCategorie()) + ") - " + name;
+            DialogResult = DialogResult.Abort;
+        }
+
+        private void QuestionForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
