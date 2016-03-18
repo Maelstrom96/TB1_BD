@@ -7,12 +7,18 @@ using System.Text;
 /**
  * 
  */
-public class NoQuestionException {
+public class NoQuestionException : Exception
+{
+        public NoQuestionException()
+        {
+        }
 
-	/**
-	 * 
-	 */
-	public NoQuestionException() {
-	}
+        public NoQuestionException(string message) : base(message)
+        {
+        }
 
+        public NoQuestionException(string message, Exception inner)
+            : base(message, inner)
+        {
+        }
 }

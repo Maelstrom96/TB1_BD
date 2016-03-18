@@ -15,24 +15,19 @@ public class GestionQuestions {
 	public GestionQuestions() {
 	}
 
+	private void AjouterQuestion(Question question) {
 
-	public void AjouterQuestion(Question question) {
-		// TODO implement here
 	}
-	public void SupprimerQuestion(Question question) {
-		// TODO implement here
+	private void SupprimerQuestion(Question question) {
+
 	}
 
-	public void ModifierQuestion(Question old, Question new_) {
-		// TODO implement here
-	}
 	public Question GetQuestionAleatoire(char Category) {
-		// TODO implement here
+
 		return null;
 	}
-	public List<Question> GetQuestionsFromDB(uint Qty) {
-		// TODO implement here
-		return null;
+	private void GetQuestionsFromDB() {
+
 	}
 
 }

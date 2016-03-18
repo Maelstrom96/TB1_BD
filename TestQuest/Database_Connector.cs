@@ -213,6 +213,22 @@ namespace TestQuest
                 return list;
             }
 
+            public static DataTable Categories()
+            {
+                OracleCommand cat = new OracleCommand("GESTIONSCATEGORIES", Database_Connector.GetConnection());
+                cat.CommandText = "GESTIONSCATEGORIES.LISTALL";
+                cat.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
+                oraReturn.Direction = ParameterDirection.ReturnValue;
+                cat.Parameters.Add(oraReturn);
+
+                OracleDataAdapter adapter = new OracleDataAdapter(cat);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+
             //SELECT FOR PLAYERS TO POPULATE THE DGV IN (ADMIN)
             public static DataTable Players()
             {

@@ -9,30 +9,59 @@ using System.Text;
  */
 public class CategorieQuestions {
 
-    private char Categorie;
-    private List<Question> ListQuestions;
+    private char categorie;
+    private List<Question> ListQuestions = new List<Question>();
+    private String couleur;
+    private String nomCategorie;
+    static Random rnd = new Random();
 
-	public CategorieQuestions() {
+	public CategorieQuestions(char cat_, String nom_, string couleur_) {
+        categorie = cat_;
+        nomCategorie = nom_;
+        couleur = couleur_;
 	}
 	
+    public String GetNomCategorie()
+    {
+        return nomCategorie;
+    }
 
-	public char GetCategorie() {
-		// TODO implement here
-		return '\0';
+    public String GetCouleur()
+    {
+        return couleur;
+    }
+
+	public char GetCategorie() 
+    {
+		return categorie;
 	}
-	public Question GetQuestionAleatoire() {
-		// TODO implement here
-		return null;
+	public Question GetQuestionAleatoire() 
+    {
+        if (ListQuestions.Count > 0)
+        {
+            int r = rnd.Next(ListQuestions.Count);
+            return null;
+        }
+        else throw new NoQuestionException(GetCategorie().ToString());
 	}
-	public void AjouterQuestions(List<Question> list) {
-		// TODO implement here
+	public void AjouterQuestions(List<Question> list) 
+    {
+        ListQuestions.AddRange(list);
 	}
+
+    public void AjouterQuestions(Question quest)
+    {
+        ListQuestions.Add(quest);
+    }
+
 	public void Clear() {
-		// TODO implement here
+        ListQuestions.Clear();
 	}
-	public void Equals(char other) {
-		// TODO implement here
+
+	public bool Equals(char other) {
+        return other.Equals(categorie);
 	}
+
     public static char GetColor(String categorie)
     {
         switch (categorie)
