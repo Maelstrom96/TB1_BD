@@ -47,6 +47,14 @@ public class Joueur {
 		return null;
 	}
 
+    public void IncrementScore(char categorie)
+    {
+        foreach(Score score in Scores)
+        {
+            if (score.GetCategorie() == categorie) score.Increment();
+        }
+    }
+
 	public uint GetScore(char codeCategorie) {
 		foreach(Score score in Scores)
             if (score.GetCategorie() == codeCategorie) return score.GetScore();

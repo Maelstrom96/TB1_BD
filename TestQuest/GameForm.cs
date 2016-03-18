@@ -78,6 +78,7 @@ namespace TestQuest
         {
             lb_Categorie.Text = wheel.GetCurrentPick().ToString();
             gm.CurrentPlayerPlay(wheel.GetCurrentPick().ToString());
+            UpdateScores();
         }
 
         private void SetBaseScores()

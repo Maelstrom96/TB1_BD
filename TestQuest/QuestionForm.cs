@@ -45,18 +45,20 @@ namespace TestQuest
 
         private void bt_Answer_Click(object sender, EventArgs e)
         {
-            if (sender is Button)
+            if (sender is Button && dr == DialogResult.Abort)
             {
                 Button bt = (Button)sender;
                 if (bt.Text == question.GetBonneReponse().GetReponse())
                 {
                     bt.BackColor = Color.Green;
                     timer.Enabled = true;
+                    dr = DialogResult.Yes;
                 }
                 else
                 {
                     bt.BackColor = Color.Red;
                     timer.Enabled = true;
+                    dr = DialogResult.No;
 
                     foreach(Button btn in lb)
                     {

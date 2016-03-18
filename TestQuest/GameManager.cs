@@ -16,7 +16,7 @@ namespace TestQuest
 
         public GameManager(Joueur[] joueurs_)
         {
-            currentPlayerIndex = 1;
+            currentPlayerIndex = 0;
             joueurs = joueurs_;
         }
 
@@ -35,6 +35,16 @@ namespace TestQuest
             Question qt = gestionQuestions.GetQuestionAleatoire(Cat);
             QuestionForm form = new QuestionForm(qt, GetCurrentPlayer().GetAlias());
             DialogResult dr = form.ShowDialog();
+
+            // Victory
+            if (dr == DialogResult.Yes)
+            {
+                GetCurrentPlayer().IncrementScore(CategorieQuestions.GetColor(Cat));
+            }
+            else
+            {
+                SetNextPlayer();
+            }
         }
 
         public uint GetPlayerScore(int index_, char categorie_)
@@ -45,6 +55,12 @@ namespace TestQuest
         public int GetMaxScore()
         {
             return MaxScore;
+        }
+
+        private void SetNextPlayer()
+        {
+            if (currentPlayerIndex == joueurs.Length - 1) currentPlayerIndex = 0;
+            else currentPlayerIndex++;
         }
     }
 }
