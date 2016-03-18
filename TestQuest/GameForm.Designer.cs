@@ -171,7 +171,7 @@
             this.lb_BaseScoreP1O.Name = "lb_BaseScoreP1O";
             this.lb_BaseScoreP1O.Size = new System.Drawing.Size(20, 28);
             this.lb_BaseScoreP1O.TabIndex = 13;
-            this.lb_BaseScoreP1O.Text = "3";
+            this.lb_BaseScoreP1O.Text = "2";
             this.lb_BaseScoreP1O.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lb_ScoreP1O

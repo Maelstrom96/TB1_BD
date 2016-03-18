@@ -34,6 +34,7 @@ namespace TestQuest
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_SpinComplete);
 
             SetPlayerName();
+            SetBaseScore();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -66,11 +67,6 @@ namespace TestQuest
 
         private void button3_Click(object sender, EventArgs e)
         {
-            LBL_Questions.Text = "";
-            BTN_Answer1.Visible = false;
-            BTN_Answer2.Visible = false;
-            BTN_Answer3.Visible = false;
-            BTN_Answer4.Visible = false;
             if (!bw.IsBusy)
             {
                 bw.RunWorkerAsync();
@@ -81,6 +77,20 @@ namespace TestQuest
         {
             lb_Categorie.Text = wheel.GetCurrentPick().ToString();
             gm.CurrentPlayerPlay(wheel.GetCurrentPick().ToString());
+        }
+
+        private void SetBaseScore()
+        {
+            foreach (Control control in Controls)
+            {
+                if (control is Label)
+                {
+                    Label lbl = (Label)control;
+                    if (lbl.Name.StartsWith("lb_BaseScore"))
+                        lbl.Text = gm.GetMaxScore().ToString();
+
+                }
+            }
         }
 
         private void SetPlayerName()

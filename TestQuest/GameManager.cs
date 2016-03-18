@@ -9,6 +9,7 @@ namespace TestQuest
 {
     class GameManager
     {
+        private const int MaxScore = 3;
         private Joueur[] joueurs;
         private int currentPlayerIndex;
         private GestionQuestions gestionQuestions = new GestionQuestions();
@@ -34,6 +35,11 @@ namespace TestQuest
             Question qt = gestionQuestions.GetQuestionAleatoire(Cat);
             QuestionForm form = new QuestionForm(qt, GetCurrentPlayer().GetAlias());
             DialogResult dr = form.ShowDialog();
+        }
+
+        public int GetMaxScore()
+        {
+            return MaxScore;
         }
     }
 }
