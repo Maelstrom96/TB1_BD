@@ -16,6 +16,7 @@ namespace TestQuest
         private Joueur[] joueurs;
         private Wheel wheel;
         private BackgroundWorker bw = new BackgroundWorker();
+        private Question quest;
 
         public GameForm(Joueur[] joueurs_)
         {
@@ -71,18 +72,25 @@ namespace TestQuest
 
         private void bw_SpinComplete(object sender, RunWorkerCompletedEventArgs e)
         {
+            LBL_Questions.Text = "";
             lb_Categorie.Text = wheel.GetCurrentPick().ToString();
+            quest = Database_Connector.Select.RandomQuestion(CategorieQuestions.GetColor(lb_Categorie.Text));
+            Reponse[] rep = quest.GetReponses();
+            LBL_Questions.Text = quest.GetQuestion();
+            BTN_Answer1.Visible = true;
+            BTN_Answer1.Text = rep[0].GetReponse().ToString();
+            BTN_Answer2.Visible = true;
+            BTN_Answer2.Text = rep[1].GetReponse().ToString();
+            BTN_Answer3.Visible = true;
+            BTN_Answer3.Text = rep[2].GetReponse().ToString();
+            BTN_Answer4.Visible = true;
+            BTN_Answer4.Text = rep[3].GetReponse().ToString();
         }
 
         private void BTN_Admin_Click(object sender, EventArgs e)
         {
             Admin admin = new Admin();
             admin.ShowDialog();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

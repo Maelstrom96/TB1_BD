@@ -52,6 +52,62 @@ namespace TestQuest
 
         public static class Select
         {
+
+            public static Question RandomQuestion(char categorie)
+            {
+                List<Reponse> repList = new List<Reponse>();
+                Question question;
+
+                OracleCommand questionListe = new OracleCommand("GESTIONSQUESTIONS", Database_Connector.GetConnection());
+                questionListe.CommandText = "GESTIONSQUESTIONS.CHERCHERQUESTION";
+                questionListe.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
+                oraReturn.Direction = ParameterDirection.ReturnValue;
+                questionListe.Parameters.Add(oraReturn);
+
+                OracleParameter oraParam = new OracleParameter("QCODE", OracleDbType.Char);
+                oraParam.Direction = ParameterDirection.Input;
+                oraParam.Value = categorie;
+                questionListe.Parameters.Add(oraParam);
+
+                using (OracleDataReader reader = questionListe.ExecuteReader())
+                {
+                    uint uid = 0;
+                    String quest = null;
+                    char code = '0';
+
+                    while (reader.Read())
+                    {
+                        uid = uint.Parse(reader.GetDecimal(0).ToString());
+                        quest = reader.GetString(1);
+                        code = char.Parse(reader.GetString(2));
+                    }
+                    OracleCommand reponsesListe = new OracleCommand("GESTIONSREPONSES", Database_Connector.GetConnection());
+                    reponsesListe.CommandText = "GESTIONSREPONSES.GETREP";
+                    reponsesListe.CommandType = CommandType.StoredProcedure;
+
+                    OracleParameter oraReturnRep = new OracleParameter("RETURN", OracleDbType.RefCursor);
+                    oraReturnRep.Direction = ParameterDirection.ReturnValue;
+                    reponsesListe.Parameters.Add(oraReturnRep);
+
+                    OracleParameter ora = new OracleParameter("RCODE", OracleDbType.Int32);
+                    ora.Direction = ParameterDirection.Input;
+                    ora.Value = uid;
+                    reponsesListe.Parameters.Add(ora);
+
+                    using (OracleDataReader reader2 = reponsesListe.ExecuteReader())
+                    {
+                        while (reader2.Read())
+                        {
+                            repList.Add(new Reponse(uint.Parse(reader2.GetDecimal(0).ToString()), reader2.GetString(1), reader2.GetString(2).Equals("Y")));
+                        }
+                        question = new Question(uid, quest, code, repList.ToArray());
+                    }
+
+                    return question;
+                }
+            }
             public static Joueur Joueur(String alias)
             {
                 OracleCommand joueurCommand = new OracleCommand("GESTIONSPLAYERS", Database_Connector.GetConnection());

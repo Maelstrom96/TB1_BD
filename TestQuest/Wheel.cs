@@ -58,7 +58,7 @@ namespace TestQuest
             if (indexAngle < 18) return Categories.Histoire;
             else if (indexAngle < 18 + (categorieAngle * 1)) return Categories.Geographie;
             else if (indexAngle < 18 + (categorieAngle * 2)) return Categories.Science;
-            else if (indexAngle < 18 + (categorieAngle * 3)) return Categories.Sport;
+            else if (indexAngle < 18 + (categorieAngle * 3)) return Categories.Sports;
             else if (indexAngle < 18 + (categorieAngle * 4)) return Categories.Joker;
             else return Categories.Histoire;
         }

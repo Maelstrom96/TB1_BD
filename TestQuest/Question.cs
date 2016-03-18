@@ -13,6 +13,7 @@ public class Question {
 	private char codeCategorie;
 	private Reponse[] reponses;
 	private Reponse bonneReponse;
+    private int id;
 
 	/**
 	 * @param Reponses 
@@ -26,6 +27,12 @@ public class Question {
         bonneReponse = FindBonneReponse();
 	}
 
+    public Question(int Id, string Question, char Categorie)
+    {
+        id = Id;
+        question = Question;
+        codeCategorie = Categorie;
+    }
     private Reponse FindBonneReponse()
     {
         foreach(Reponse reponse in reponses)

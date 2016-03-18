@@ -8,6 +8,7 @@ public class Joueur {
 	private string Nom;
 	private string Prenom;
 	private Score[] Scores;
+    private uint Score;
 
 	public Joueur(string alias, string nom, string prenom) {
         Alias = alias;
@@ -37,9 +38,13 @@ public class Joueur {
 		return null;
 	}
 
-	public uint GetScore(char categorie) {
-		// TODO implement here
-		return 0;
+	public uint GetScore() {
+		return Score;
 	}
+
+    public void SetScore(uint i)
+    {
+        Score += i;
+    }
 
 }
