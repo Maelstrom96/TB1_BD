@@ -34,7 +34,8 @@ namespace TestQuest
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_SpinComplete);
 
             SetPlayerName();
-            SetBaseScore();
+            SetBaseScores();
+            UpdateScores();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -79,7 +80,7 @@ namespace TestQuest
             gm.CurrentPlayerPlay(wheel.GetCurrentPick().ToString());
         }
 
-        private void SetBaseScore()
+        private void SetBaseScores()
         {
             foreach (Control control in Controls)
             {
@@ -93,7 +94,7 @@ namespace TestQuest
             }
         }
 
-        private void UpdateScore()
+        private void UpdateScores()
         {
             foreach (Control control in Controls)
             {

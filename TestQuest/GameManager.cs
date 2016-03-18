@@ -37,9 +37,9 @@ namespace TestQuest
             DialogResult dr = form.ShowDialog();
         }
 
-        public int GetPlayerScore(int index_, char categorie_)
+        public uint GetPlayerScore(int index_, char categorie_)
         {
-            return joueurs[index_].GetScore
+            return joueurs[index_].GetScore(categorie_);
         }
 
         public int GetMaxScore()

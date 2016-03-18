@@ -87,6 +87,7 @@
             // 
             // BTN_Modifier
             // 
+            this.BTN_Modifier.Enabled = false;
             this.BTN_Modifier.Location = new System.Drawing.Point(478, 12);
             this.BTN_Modifier.Name = "BTN_Modifier";
             this.BTN_Modifier.Size = new System.Drawing.Size(75, 23);
