@@ -8,12 +8,14 @@ using System.Text;
  * 
  */
 public class Reponse {
+    private int questionID_;
     private uint id_;
 	private string reponse_;
     private bool bonne_;
 
-	public Reponse(uint id, string reponse, bool bonne) 
+	public Reponse(uint id, string reponse, bool bonne, int questid = 0) 
     {
+        questionID_ = questid;
         id_ = id;
         reponse_ = reponse;
         bonne_ = bonne;
@@ -32,6 +34,11 @@ public class Reponse {
     public bool EstBonne()
     {
         return bonne_;
+    }
+
+    public bool EqualQuestion(int questionID)
+    {
+        return questionID_.Equals(questionID);
     }
 
 }

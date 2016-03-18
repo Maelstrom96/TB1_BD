@@ -40,7 +40,9 @@ public class CategorieQuestions {
         if (ListQuestions.Count > 0)
         {
             int r = rnd.Next(ListQuestions.Count);
-            return null;
+            Question qt = ListQuestions[r];
+            ListQuestions.RemoveAt(r);
+            return qt;
         }
         else throw new NoQuestionException(GetCategorie().ToString());
 	}
@@ -61,6 +63,11 @@ public class CategorieQuestions {
 	public bool Equals(char other) {
         return other.Equals(categorie);
 	}
+
+    public bool Equals(String other)
+    {
+        return other.Equals(nomCategorie);
+    }
 
     public static char GetColor(String categorie)
     {

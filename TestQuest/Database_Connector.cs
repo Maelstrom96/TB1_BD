@@ -52,6 +52,32 @@ namespace TestQuest
 
         public static class Select
         {
+            public static List<Reponse> Reponses()
+            {
+                List<Reponse> list = new List<Reponse>();
+
+                OracleCommand rep = new OracleCommand("GESTIONSREPONSE", Database_Connector.GetConnection());
+                rep.CommandText = "GESTIONSREPONSES.LISTER";
+                rep.CommandType = CommandType.StoredProcedure;
+
+                OracleParameter oraReturn = new OracleParameter("RETURN", OracleDbType.RefCursor);
+                oraReturn.Direction = ParameterDirection.ReturnValue;
+                rep.Parameters.Add(oraReturn);
+
+                using (OracleDataReader reader = rep.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        uint uid = uint.Parse(reader.GetDecimal(0).ToString());
+                        String Rep = reader.GetString(1);
+                        bool bonne = reader.GetString(2).Equals("Y");
+                        int questid = int.Parse(reader.GetDecimal(3).ToString());
+                        list.Add(new Reponse(uid, Rep, bonne, questid));
+                    }
+                }
+
+                return list;
+            }
 
             public static Question RandomQuestion(char categorie)
             {
@@ -213,7 +239,7 @@ namespace TestQuest
                 return list;
             }
 
-            public static DataTable Categories()
+            public static DataTable TableCategories()
             {
                 OracleCommand cat = new OracleCommand("GESTIONSCATEGORIES", Database_Connector.GetConnection());
                 cat.CommandText = "GESTIONSCATEGORIES.LISTALL";

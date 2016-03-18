@@ -17,6 +17,7 @@ namespace TestQuest
         private Wheel wheel;
         private BackgroundWorker bw = new BackgroundWorker();
         private Question quest;
+        private GameManager gm = new GameManager();
 
         public GameForm(Joueur[] joueurs_)
         {

@@ -9,6 +9,11 @@ namespace TestQuest
     class GameManager
     {
         private Joueur[] joueurs;
-        private GestionQuestions gestionQuestions;
+        private GestionQuestions gestionQuestions = new GestionQuestions();
+
+        public GameManager()
+        {
+
+        }
     }
 }
