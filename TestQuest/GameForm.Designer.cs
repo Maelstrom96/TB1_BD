@@ -72,7 +72,7 @@
             // LBL_Questions
             // 
             this.LBL_Questions.AutoSize = true;
-            this.LBL_Questions.Location = new System.Drawing.Point(54, 397);
+            this.LBL_Questions.Location = new System.Drawing.Point(12, 400);
             this.LBL_Questions.Name = "LBL_Questions";
             this.LBL_Questions.Size = new System.Drawing.Size(10, 13);
             this.LBL_Questions.TabIndex = 5;
@@ -123,24 +123,24 @@
             this.LBL_Score0.AutoSize = true;
             this.LBL_Score0.Location = new System.Drawing.Point(12, 12);
             this.LBL_Score0.Name = "LBL_Score0";
-            this.LBL_Score0.Size = new System.Drawing.Size(35, 13);
+            this.LBL_Score0.Size = new System.Drawing.Size(41, 13);
             this.LBL_Score0.TabIndex = 7;
-            this.LBL_Score0.Text = "label1";
+            this.LBL_Score0.Text = "Score0";
             // 
             // LBL_score1
             // 
             this.LBL_score1.AutoSize = true;
             this.LBL_score1.Location = new System.Drawing.Point(54, 12);
             this.LBL_score1.Name = "LBL_score1";
-            this.LBL_score1.Size = new System.Drawing.Size(35, 13);
+            this.LBL_score1.Size = new System.Drawing.Size(41, 13);
             this.LBL_score1.TabIndex = 7;
-            this.LBL_score1.Text = "label1";
+            this.LBL_score1.Text = "Score1";
             // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 641);
+            this.ClientSize = new System.Drawing.Size(484, 642);
             this.Controls.Add(this.LBL_score1);
             this.Controls.Add(this.LBL_Score0);
             this.Controls.Add(this.BTN_Answer4);

@@ -65,6 +65,11 @@ namespace TestQuest
 
         private void button3_Click(object sender, EventArgs e)
         {
+            LBL_Questions.Text = "";
+            BTN_Answer1.Visible = false;
+            BTN_Answer2.Visible = false;
+            BTN_Answer3.Visible = false;
+            BTN_Answer4.Visible = false;
             if (!bw.IsBusy)
             {
                 bw.RunWorkerAsync();
