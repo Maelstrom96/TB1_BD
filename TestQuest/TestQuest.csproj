@@ -82,6 +82,12 @@
     </Compile>
     <Compile Include="GestionQuestions.cs" />
     <Compile Include="Jeu.cs" />
+    <Compile Include="JokerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JokerForm.Designer.cs">
+      <DependentUpon>JokerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Joueur.cs" />
     <Compile Include="Exceptions\NoQuestionException.cs" />
     <Compile Include="Exceptions\PlayerNotFoundException.cs" />
@@ -112,6 +118,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GameSetupForm.resx">
       <DependentUpon>GameSetupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JokerForm.resx">
+      <DependentUpon>JokerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

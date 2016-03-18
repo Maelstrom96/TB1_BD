@@ -122,7 +122,6 @@
             this.lb_Joueur1.Name = "lb_Joueur1";
             this.lb_Joueur1.Size = new System.Drawing.Size(219, 25);
             this.lb_Joueur1.TabIndex = 8;
-            this.lb_Joueur1.Text = "Maelstrom";
             // 
             // pictureBox1
             // 
@@ -301,7 +300,6 @@
             this.lb_Joueur2.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lb_Joueur2.Size = new System.Drawing.Size(203, 25);
             this.lb_Joueur2.TabIndex = 8;
-            this.lb_Joueur2.Text = "Maelstrom";
             this.lb_Joueur2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // pictureBox5

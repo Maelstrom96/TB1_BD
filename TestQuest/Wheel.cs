@@ -28,8 +28,8 @@ namespace TestQuest
 
         float indexAngle = 270; // Middle of White;
         float spin;
-        const float maxspin = 3.5F;
-        const float minspin = 2.5F;
+        const float maxspin = 2.93858612F;
+        const float minspin = 2.748754F;
         Point center;
 
         const float diameter = 300.0F;

@@ -77,7 +77,17 @@ namespace TestQuest
         private void bw_SpinComplete(object sender, RunWorkerCompletedEventArgs e)
         {
             lb_Categorie.Text = wheel.GetCurrentPick().ToString();
-            gm.CurrentPlayerPlay(wheel.GetCurrentPick().ToString());
+
+            if (wheel.GetCurrentPick().ToString() != "Joker")
+            {
+                if (gm.GetCurrentPlayer().GetScore(CategorieQuestions.GetColor(wheel.GetCurrentPick().ToString())) < gm.GetMaxScore())
+                    gm.CurrentPlayerPlay(wheel.GetCurrentPick().ToString());
+            }
+            else
+            {
+
+            }
+
             UpdateScores();
         }
 
@@ -119,6 +129,11 @@ namespace TestQuest
         {
             Admin admin = new Admin();
             admin.ShowDialog();
+        }
+
+        private void lb_Joueur1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
