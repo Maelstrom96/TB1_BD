@@ -181,7 +181,7 @@
             this.lb_ScoreP1O.Name = "lb_ScoreP1O";
             this.lb_ScoreP1O.Size = new System.Drawing.Size(20, 28);
             this.lb_ScoreP1O.TabIndex = 13;
-            this.lb_ScoreP1O.Text = "0";
+            this.lb_ScoreP1O.Text = "1";
             this.lb_ScoreP1O.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lb_SlashP1O

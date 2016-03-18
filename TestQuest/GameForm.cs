@@ -93,6 +93,20 @@ namespace TestQuest
             }
         }
 
+        private void UpdateScore()
+        {
+            foreach (Control control in Controls)
+            {
+                if (control is Label)
+                {
+                    Label lbl = (Label)control;
+                    if (lbl.Name.StartsWith("lb_Score"))
+                        lbl.Text = gm.GetPlayerScore(int.Parse(lbl.Name[lbl.Name.Length - 2].ToString()) - 1, lbl.Name[lbl.Name.Length - 1]).ToString();
+
+                }
+            }
+        }
+
         private void SetPlayerName()
         {
             lb_Joueur1.Text = gm.GetPlayers()[0].GetAlias();

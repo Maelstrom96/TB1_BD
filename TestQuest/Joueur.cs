@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using TestQuest;
 
 public class Joueur {
 	private string Alias;
@@ -16,9 +17,9 @@ public class Joueur {
         Prenom = prenom;
 	}
 
-    public Joueur(string alias)
+    private void CreateScores()
     {
-
+        Database_Connector.Select.
     }
 
 	public string GetAlias() {

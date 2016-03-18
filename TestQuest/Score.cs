@@ -4,41 +4,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-/**
- * 
- */
 public class Score {
-	/**
-	 * 
-	 */
 	private char categorie;
+	private uint score = 0;
 
-	/**
-	 * 
-	 */
-	private uint score;
-
-	/**
-	 * @param Categorie
-	 */
 	public Score(char Categorie) {
-		// TODO implement here
-	}
+        categorie = Categorie;
+    }
 
-	/**
-	 * @return
-	 */
 	public uint GetScore() {
-		// TODO implement here
-		return 0;
+		return score;
 	}
 
-	/**
-	 * @return
-	 */
 	public char GetCategorie() {
-		// TODO implement here
-		return '\0';
+		return categorie;
 	}
+
+    public void Increment()
+    {
+        score++;
+    }
 
 }
