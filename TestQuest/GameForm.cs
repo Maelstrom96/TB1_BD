@@ -13,16 +13,15 @@ namespace TestQuest
 {
     public partial class GameForm : Form
     {
-        private Joueur[] joueurs;
         private Wheel wheel;
         private BackgroundWorker bw = new BackgroundWorker();
         private Question quest;
-        private GameManager gm = new GameManager();
+        private GameManager gm;
 
         public GameForm(Joueur[] joueurs_)
         {
             InitializeComponent();
-            joueurs = joueurs_;
+            gm = new GameManager(joueurs_);
 
             this.SetStyle(
                 ControlStyles.AllPaintingInWmPaint |
@@ -83,14 +82,14 @@ namespace TestQuest
             quest = Database_Connector.Select.RandomQuestion(CategorieQuestions.GetColor(lb_Categorie.Text));
             Reponse[] rep = quest.GetReponses();
             LBL_Questions.Text = quest.GetQuestion();
-            BTN_Answer1.Visible = true;
-            BTN_Answer1.Text = rep[0].GetReponse().ToString();
-            BTN_Answer2.Visible = true;
-            BTN_Answer2.Text = rep[1].GetReponse().ToString();
-            BTN_Answer3.Visible = true;
-            BTN_Answer3.Text = rep[2].GetReponse().ToString();
-            BTN_Answer4.Visible = true;
-            BTN_Answer4.Text = rep[3].GetReponse().ToString();
+            //BTN_Answer1.Visible = true;
+            //BTN_Answer1.Text = rep[0].GetReponse().ToString();
+            //BTN_Answer2.Visible = true;
+            //BTN_Answer2.Text = rep[1].GetReponse().ToString();
+            //BTN_Answer3.Visible = true;
+            //BTN_Answer3.Text = rep[2].GetReponse().ToString();
+            //BTN_Answer4.Visible = true;
+            //BTN_Answer4.Text = rep[3].GetReponse().ToString();
         }
 
         private void BTN_Admin_Click(object sender, EventArgs e)
