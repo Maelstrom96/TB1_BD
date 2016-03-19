@@ -9,7 +9,7 @@ namespace TestQuest
 {
     class GameManager
     {
-        private const int MaxScore = 3;
+        private static int MaxScore = 3;
         private Joueur[] joueurs;
         private int currentPlayerIndex;
         private GestionQuestions gestionQuestions = new GestionQuestions();
@@ -52,7 +52,7 @@ namespace TestQuest
             return joueurs[index_].GetScore(categorie_);
         }
 
-        public int GetMaxScore()
+        public static int GetMaxScore()
         {
             return MaxScore;
         }

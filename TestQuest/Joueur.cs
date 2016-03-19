@@ -60,4 +60,16 @@ public class Joueur {
             if (score.GetCategorie() == codeCategorie) return score.GetScore();
         throw new Exception("Score non créé!");
 	}
+
+    public List<String> GetAvailableCategory()
+    {
+        List<String> listCat = Database_Connector.Select.Categories();
+        List<String> finalList = new List<String>();
+        foreach(String cat in listCat)
+        {
+            if (GetScore(CategorieQuestions.GetColor(cat)) < GameManager.GetMaxScore()) finalList.Add(cat);
+        }
+
+        return finalList;
+    }
 }

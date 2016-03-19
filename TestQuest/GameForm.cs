@@ -80,12 +80,15 @@ namespace TestQuest
 
             if (wheel.GetCurrentPick().ToString() != "Joker")
             {
-                if (gm.GetCurrentPlayer().GetScore(CategorieQuestions.GetColor(wheel.GetCurrentPick().ToString())) < gm.GetMaxScore())
+                if (gm.GetCurrentPlayer().GetScore(CategorieQuestions.GetColor(wheel.GetCurrentPick().ToString())) < GameManager.GetMaxScore())
                     gm.CurrentPlayerPlay(wheel.GetCurrentPick().ToString());
             }
             else
             {
-
+                String choice = String.Empty;
+                JokerForm jkform = new JokerForm(ref choice, gm.GetCurrentPlayer().GetAvailableCategory());
+                jkform.ShowDialog();
+                gm.CurrentPlayerPlay(choice);
             }
 
             UpdateScores();
@@ -99,7 +102,7 @@ namespace TestQuest
                 {
                     Label lbl = (Label)control;
                     if (lbl.Name.StartsWith("lb_BaseScore"))
-                        lbl.Text = gm.GetMaxScore().ToString();
+                        lbl.Text = GameManager.GetMaxScore().ToString();
 
                 }
             }

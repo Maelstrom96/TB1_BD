@@ -12,9 +12,36 @@ namespace TestQuest
 {
     public partial class JokerForm : Form
     {
-        public JokerForm()
+        String choice_;
+        public JokerForm(ref String choice, List<String> AvailableCategories)
         {
             InitializeComponent();
+
+            choice_ = choice;
+
+            List<String> Categories = Database_Connector.Select.Categories();
+            foreach (Control control in Controls)
+            {
+                if (control is Button)
+                {
+                    Button btn = (Button)control;
+                    if (btn.Name.StartsWith("bt_Cat") && Categories.Count > 0)
+                    {
+                        btn.Text = Categories[0];
+
+                        if (!AvailableCategories.Contains(Categories[0])) btn.Enabled = false;
+
+                        Categories.RemoveAt(0);     
+                    }
+                }
+            }
+        }
+
+        private void bt_Category_Click(object sender, EventArgs e)
+        {
+            Button bt = (Button)sender;
+            choice_ = bt.Text;
+            Close();
         }
     }
 }
