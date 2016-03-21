@@ -62,5 +62,12 @@ namespace TestQuest
             if (currentPlayerIndex == joueurs.Length - 1) currentPlayerIndex = 0;
             else currentPlayerIndex++;
         }
+
+        public Joueur VerifyVictory()
+        {
+            foreach(Joueur joueur in joueurs)
+                if (joueur.GetAvailableCategory().Count == 0) return joueur;
+            return null;
+        }
     }
 }

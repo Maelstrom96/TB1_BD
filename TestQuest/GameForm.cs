@@ -33,6 +33,7 @@ namespace TestQuest
             bw.DoWork += new DoWorkEventHandler(bw_DoWork);
             bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_SpinComplete);
 
+            Text = "TestQuest - " + gm.GetCurrentPlayer().GetAlias();
             SetPlayerName();
             SetBaseScores();
             UpdateScores();
@@ -85,11 +86,12 @@ namespace TestQuest
             }
             else
             {
-                String choice = String.Empty;
-                JokerForm jkform = new JokerForm(ref choice, gm.GetCurrentPlayer().GetAvailableCategory());
+                JokerForm jkform = new JokerForm(gm.GetCurrentPlayer().GetAvailableCategory());
                 jkform.ShowDialog();
-                gm.CurrentPlayerPlay(choice);
+                gm.CurrentPlayerPlay(jkform.Choix);
             }
+
+            Text = "TestQuest - " + gm.GetCurrentPlayer().GetAlias();
 
             UpdateScores();
         }

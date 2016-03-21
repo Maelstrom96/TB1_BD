@@ -12,12 +12,10 @@ namespace TestQuest
 {
     public partial class JokerForm : Form
     {
-        String choice_;
-        public JokerForm(ref String choice, List<String> AvailableCategories)
+        public String Choix { get; set; }
+        public JokerForm(List<String> AvailableCategories)
         {
             InitializeComponent();
-
-            choice_ = choice;
 
             List<String> Categories = Database_Connector.Select.Categories();
             foreach (Control control in Controls)
@@ -40,7 +38,7 @@ namespace TestQuest
         private void bt_Category_Click(object sender, EventArgs e)
         {
             Button bt = (Button)sender;
-            choice_ = bt.Text;
+            Choix = bt.Text;
             Close();
         }
     }
