@@ -9,7 +9,7 @@ namespace TestQuest
 {
     public class GameManager
     {
-        private static int MaxScore = 1;
+        private static int MaxScore = 3;
         private Joueur[] joueurs;
         private int currentPlayerIndex;
         private GestionQuestions gestionQuestions = new GestionQuestions();
