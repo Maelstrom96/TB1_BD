@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button3 = new System.Windows.Forms.Button();
             this.lb_Categorie = new System.Windows.Forms.Label();
-            this.BTN_Admin = new System.Windows.Forms.Button();
             this.LBL_Questions = new System.Windows.Forms.Label();
             this.lb_Joueur1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -77,16 +75,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(12, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Tourner";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // lb_Categorie
             // 
             this.lb_Categorie.Font = new System.Drawing.Font("Franklin Gothic Heavy", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -95,16 +83,6 @@
             this.lb_Categorie.Size = new System.Drawing.Size(485, 21);
             this.lb_Categorie.TabIndex = 3;
             this.lb_Categorie.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // BTN_Admin
-            // 
-            this.BTN_Admin.Location = new System.Drawing.Point(376, 12);
-            this.BTN_Admin.Name = "BTN_Admin";
-            this.BTN_Admin.Size = new System.Drawing.Size(85, 23);
-            this.BTN_Admin.TabIndex = 4;
-            this.BTN_Admin.Text = "Administration";
-            this.BTN_Admin.UseVisualStyleBackColor = true;
-            this.BTN_Admin.Click += new System.EventHandler(this.BTN_Admin_Click);
             // 
             // LBL_Questions
             // 
@@ -503,9 +481,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lb_Joueur1);
             this.Controls.Add(this.LBL_Questions);
-            this.Controls.Add(this.BTN_Admin);
             this.Controls.Add(this.lb_Categorie);
-            this.Controls.Add(this.button3);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(500, 680);
             this.MinimizeBox = false;
@@ -515,6 +491,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.GameForm_MouseClick);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -530,9 +507,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label lb_Categorie;
-        private System.Windows.Forms.Button BTN_Admin;
         private System.Windows.Forms.Label LBL_Questions;
         private System.Windows.Forms.Label lb_Joueur1;
         private System.Windows.Forms.PictureBox pictureBox1;

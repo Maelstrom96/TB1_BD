@@ -43,9 +43,17 @@ public class Joueur {
 	}
 
 	public Score[] GetScores() {
-		// TODO implement here
 		return null;
 	}
+
+    public int GetTotalScore()
+    {
+        int score_ = 0;
+        foreach(Score score in Scores)
+            score_ += int.Parse(score.GetScore().ToString());
+
+        return score_;
+    }
 
     public void IncrementScore(char categorie)
     {

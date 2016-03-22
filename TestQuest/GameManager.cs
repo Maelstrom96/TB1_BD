@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace TestQuest
 {
-    class GameManager
+    public class GameManager
     {
-        private static int MaxScore = 3;
+        private static int MaxScore = 1;
         private Joueur[] joueurs;
         private int currentPlayerIndex;
         private GestionQuestions gestionQuestions = new GestionQuestions();

@@ -63,6 +63,16 @@ namespace TestQuest
             else return Categories.Histoire;
         }
 
+        public Point GetCenter()
+        {
+            return center;
+        }
+
+        public float GetRadius()
+        {
+            return radius;
+        }
+
         public void RandSpin()
         {
             spin = (float)(rnd.NextDouble() * (maxspin - minspin) + minspin);

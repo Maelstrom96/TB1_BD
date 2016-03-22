@@ -64,15 +64,7 @@ namespace TestQuest
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            if (!bw.IsBusy)
-            {
-                bw.RunWorkerAsync();
-            }
+            Database_Connector.CloseConnection();
         }
 
         private void bw_SpinComplete(object sender, RunWorkerCompletedEventArgs e)
@@ -92,6 +84,15 @@ namespace TestQuest
             }
 
             Text = "TestQuest - " + gm.GetCurrentPlayer().GetAlias();
+
+            //CHECK VICTORY
+            if (gm.VerifyVictory() != null)
+            {
+                Hide();
+                Victoire formVictoire = new Victoire(gm);
+                formVictoire.ShowDialog();
+                Close();
+            }
 
             UpdateScores();
         }
@@ -130,15 +131,11 @@ namespace TestQuest
             lb_Joueur2.Text = gm.GetPlayers()[1].GetAlias();
         }
 
-        private void BTN_Admin_Click(object sender, EventArgs e)
+        private void GameForm_MouseClick(object sender, MouseEventArgs e)
         {
-            Admin admin = new Admin();
-            admin.ShowDialog();
-        }
-
-        private void lb_Joueur1_Click(object sender, EventArgs e)
-        {
-
+            if (Math.Pow(e.X - wheel.GetCenter().X, 2) + Math.Pow(e.Y - wheel.GetCenter().Y, 2) < Math.Pow(wheel.GetRadius(), 2))
+                if (!bw.IsBusy)
+                    bw.RunWorkerAsync();
         }
     }
 }

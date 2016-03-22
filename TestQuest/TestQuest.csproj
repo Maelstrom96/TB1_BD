@@ -103,6 +103,12 @@
     <Compile Include="Reponse.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="Settings.cs" />
+    <Compile Include="Victoire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Victoire.Designer.cs">
+      <DependentUpon>Victoire.cs</DependentUpon>
+    </Compile>
     <Compile Include="Wheel.cs" />
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
@@ -134,6 +140,9 @@
     </Compile>
     <EmbeddedResource Include="QuestionForm.resx">
       <DependentUpon>QuestionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Victoire.resx">
+      <DependentUpon>Victoire.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

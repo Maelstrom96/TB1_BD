@@ -55,5 +55,11 @@ namespace TestQuest
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void BTN_Admin_Click(object sender, EventArgs e)
+        {
+            Admin admin = new Admin();
+            admin.ShowDialog();
+        }
     }
 }

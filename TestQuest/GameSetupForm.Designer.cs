@@ -32,6 +32,7 @@
             this.tb_Player1 = new System.Windows.Forms.TextBox();
             this.tb_Player2 = new System.Windows.Forms.TextBox();
             this.bt_Next = new System.Windows.Forms.Button();
+            this.BTN_Admin = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txt_1
@@ -75,11 +76,22 @@
             this.bt_Next.UseVisualStyleBackColor = true;
             this.bt_Next.Click += new System.EventHandler(this.bt_Next_Click);
             // 
+            // BTN_Admin
+            // 
+            this.BTN_Admin.Location = new System.Drawing.Point(318, 12);
+            this.BTN_Admin.Name = "BTN_Admin";
+            this.BTN_Admin.Size = new System.Drawing.Size(85, 23);
+            this.BTN_Admin.TabIndex = 5;
+            this.BTN_Admin.Text = "Administration";
+            this.BTN_Admin.UseVisualStyleBackColor = true;
+            this.BTN_Admin.Click += new System.EventHandler(this.BTN_Admin_Click);
+            // 
             // GameSetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(415, 363);
+            this.Controls.Add(this.BTN_Admin);
             this.Controls.Add(this.bt_Next);
             this.Controls.Add(this.tb_Player2);
             this.Controls.Add(this.tb_Player1);
@@ -98,5 +110,6 @@
         private System.Windows.Forms.TextBox tb_Player1;
         private System.Windows.Forms.TextBox tb_Player2;
         private System.Windows.Forms.Button bt_Next;
+        private System.Windows.Forms.Button BTN_Admin;
     }
 }
